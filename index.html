@@ -1,246 +1,569 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta>
-<meta>
-<title>Happy Birthday, Nikki ♡</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+  <meta>
+  <meta>
+  <meta>
+  <title>Happy Birthday, Nikki ♡</title>
 
-:root {
-  --bg: #11101a;
-  --panel: #1c1928;
-  --purple: #b99be8;
-  --pale: #e8e0f3;
-  --muted: #aaa1b9;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(ellipse at top, #29203d, var(--bg) 65%);
-  color: var(--pale);
-  font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-}
-.stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(2px 2px at 15% 20%, #fff 50%, transparent),
-    radial-gradient(2px 2px at 75% 35%, #c9a9ff 50%, transparent),
-    radial-gradient(1px 1px at 45% 75%, #fff 50%, transparent),
-    radial-gradient(2px 2px at 90% 85%, #d6c3ff 50%, transparent);
-  background-size: 220px 220px;
-  opacity: .55;
-}
-main {
-  position: relative;
-  width: min(900px, 92%);
-  margin: auto;
-  padding: 70px 0;
-}
-header { text-align: center; padding: 45px 10px 55px; }
-.eyebrow {
-  color: var(--purple);
-  letter-spacing: .25em;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(42px, 8vw, 76px);
-  line-height: 1.1;
-  margin: 22px 0;
-}
-header p { color: var(--muted); }
-.countdown {
-  color: var(--purple);
-  margin-top: 30px;
-  font-size: 13px;
-  letter-spacing: .1em;
-}
-.section-heading {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 27px;
-  margin: 25px 0;
-}
-.days {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 13px;
-}
-.day {
-  min-height: 125px;
-  padding: 20px 12px;
-  border: 1px solid #514365;
-  border-radius: 15px;
-  background: #201b2c;
-  color: var(--pale);
-  cursor: pointer;
-  text-align: center;
-  transition: .2s;
-}
-.day:hover:not(:disabled) {
-  transform: translateY(-4px);
-  border-color: var(--purple);
-}
-.day:disabled { opacity: .48; cursor: default; }
-.day-number { color: var(--purple); font-size: 12px; letter-spacing: .12em; }
-.day-name { display: block; margin-top: 12px; font-size: 14px; }
-.day-status { display: block; color: var(--muted); font-size: 11px; margin-top: 8px; }
-footer { text-align: center; color: var(--muted); padding: 55px 10px 10px; font-size: 12px; }
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 5;
-  background: #090811dd;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-.modal.show { display: flex; }
-.modal-content {
-  width: min(520px, 100%);
-  max-height: 85vh;
-  overflow-y: auto;
-  padding: 35px 25px;
-  border: 1px solid #786195;
-  border-radius: 20px;
-  background: #211b30;
-  text-align: center;
-}
-.modal-content h2 { font-family: 'Playfair Display', serif; font-size: 30px; }
-.modal-content p { white-space: pre-wrap; line-height: 1.8; color: var(--pale); }
-.close {
-  margin-top: 20px;
-  padding: 11px 24px;
-  border: 1px solid var(--purple);
-  border-radius: 30px;
-  background: transparent;
-  color: var(--pale);
-  cursor: pointer;
-}
-@media(max-width: 550px) {
-  main { padding-top: 30px; }
-  .days { grid-template-columns: repeat(2, 1fr); }
-  .day { min-height: 115px; }
-}
-</style>
+  <link>
+  <link crossorigin>
+  <link>
+
+  <style>
+    :root {
+      --bg: #11101a;
+      --panel: #1c1928;
+      --purple: #b99be8;
+      --light-purple: #d9c9f2;
+      --muted: #a39aaf;
+      --text: #f4effa;
+      --border: rgba(185, 155, 232, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 50px 20px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(110, 79, 150, 0.17), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: var(--purple);
+      opacity: 0.55;
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+
+    .star:nth-child(1) { top: 9%; left: 12%; font-size: 18px; }
+    .star:nth-child(2) { top: 18%; right: 15%; font-size: 13px; animation-delay: 1s; }
+    .star:nth-child(3) { top: 43%; left: 6%; font-size: 22px; animation-delay: 1.5s; }
+    .star:nth-child(4) { top: 58%; right: 8%; font-size: 17px; animation-delay: .5s; }
+    .star:nth-child(5) { bottom: 13%; left: 17%; font-size: 14px; animation-delay: 2s; }
+    .star:nth-child(6) { bottom: 20%; right: 18%; font-size: 22px; animation-delay: 1.2s; }
+    .star:nth-child(7) { top: 30%; left: 25%; font-size: 10px; animation-delay: .8s; }
+    .star:nth-child(8) { top: 75%; right: 30%; font-size: 12px; animation-delay: 1.8s; }
+
+    @keyframes twinkle {
+      from { opacity: .25; transform: scale(.85); }
+      to { opacity: .9; transform: scale(1.15); }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    header {
+      margin: 35px 0 65px;
+    }
+
+    .eyebrow {
+      color: var(--purple);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 8vw, 66px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0;
+      color: var(--light-purple);
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .countdown {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 12px 23px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--purple);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 500;
+      color: var(--light-purple);
+      margin-bottom: 28px;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .day {
+      min-height: 135px;
+      padding: 20px 12px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(28, 25, 40, 0.85);
+      color: var(--text);
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform .2s, border-color .2s, background .2s;
+    }
+
+    .day:not(:disabled) {
+      cursor: pointer;
+    }
+
+    .day:not(:disabled):hover {
+      transform: translateY(-4px);
+      border-color: var(--purple);
+      background: #252033;
+    }
+
+    .day:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .day-number {
+      color: var(--purple);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    .day-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .day-status {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      margin-top: 65px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      padding: 20px;
+      background: rgba(8, 7, 14, .82);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 45px 30px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--panel);
+      text-align: center;
+      animation: appear .25s ease;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-day {
+      color: var(--purple);
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+
+    .modal-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--light-purple);
+      margin: 17px 0;
+    }
+
+    .modal-content p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+    }
+
+    .close {
+      margin-top: 25px;
+      padding: 11px 25px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: transparent;
+      color: var(--light-purple);
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      background: rgba(185, 155, 232, .12);
+    }
+
+    .gift-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--light-purple);
+      text-decoration: none;
+      border-bottom: 1px solid var(--purple);
+      padding-bottom: 4px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 35px 15px;
+      }
+
+      header {
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+
+      .days {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .day {
+        min-height: 125px;
+        padding: 16px 8px;
+      }
+
+      .day-name {
+        font-size: 15px;
+      }
+
+      .modal-content {
+        padding: 40px 22px;
+      }
+    }
+  </style>
 </head>
 
-    
 <body>
 
-<div aria-hidden="true"></div>
-
-<main>
-  <header>
-    <div>a little something made for you</div>
-
-    <h1>happy 15th birthday,<br>nikki ♡</h1>
-
-    <p>eighteen little surprises, one day at a time.</p>
-
-    <div>YOUR BIRTHDAY COUNTDOWN</div>
-  </header>
-
-  <h2>your eighteen days</h2>
-
-  <section></section>
-
-  <footer>made with so much thought ♡</footer>
-</main>
-
-<div>
-  <div>
-    <div></div>
-    <h2></h2>
-    <p></p>
-    <button>close ♡</button>
+  <div aria-hidden="true">
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>·</span>
+    <span>·</span>
   </div>
-</div>
 
-</body>
+  <main>
+    <header>
+      <div>a little something made for you</div>
 
-<script>
-const gifts = [
-  { title: "a little introduction", body: "Welcome to your birthday countdown! There are eighteen little surprises waiting for you. I hope each one makes your day a little more special." },
-  { title: "a cookie recipe", body: "Your cookie recipe will go here ♡" },
-  { title: "a playlist", body: "Your playlist link will go here ♡" },
-  { title: "trivia about us", body: "Your trivia will go here ♡" },
-  { title: "a poem", body: "Your poem will go here ♡" },
-  { title: "movie night", body: "Your movie list will go here ♡" },
-  { title: "100 reasons", body: "Your 100 reasons will go here ♡" },
-  { title: "things i've never told you", body: "Your letter will go here ♡" },
-  { title: "a special letter", body: "Your letter will go here ♡" },
-  { title: "things i want to do", body: "Your list will go here ♡" },
-  { title: "things that remind me of you", body: "Your list will go here ♡" },
-  ...Array.from({length: 7}, () => ({ title: "a little surprise", body: "Your gift will go here ♡" }))
-];
+      <h1>happy 15th birthday,<br>nikki ♡</h1>
 
-function chicagoDate() {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Chicago",
-    year: "numeric", month: "2-digit", day: "2-digit"
-  }).format(new Date());
-}
+      <p>
+        eighteen little surprises, one day at a time.
+      </p>
 
-function renderDays() {
-  const today = chicagoDate();
-  const container = document.getElementById("days");
+      <div>
+        YOUR BIRTHDAY COUNTDOWN
+      </div>
+    </header>
 
-  gifts.forEach((gift, index) => {
-    const number = index + 1;
-    const date = '2026-12-${String(number).padStart(2, "0")}';
-    const unlocked = today >= date;
-    const button = document.createElement("button");
-    button.className = "day";
-    button.disabled = !unlocked;
-    button.innerHTML = '
-      <span>DAY ${String(number).padStart(2, "0")}</span>
-      <span>${gift.title}</span>
-      <span>${unlocked ? "✦ open your surprise" : "✧ still waiting"}</span>
-    ';
-    if (unlocked) button.addEventListener("click", () => openGift(number));
-    container.appendChild(button);
-  });
-}
+    <h2>your eighteen days</h2>
 
-function openGift(number) {
-  const gift = gifts[number - 1];
-  document.getElementById("modal-day").textContent = 'DAY ${number}';
-  document.getElementById("modal-title").textContent = gift.title;
-  document.getElementById("modal-body").textContent = gift.body;
-  document.getElementById("modal").classList.add("show");
-}
+    <section aria-label="Birthday surprises"></section>
 
-function closeGift() {
-  document.getElementById("modal").classList.remove("show");
-}
+    <footer>made with so much thought ♡</footer>
+  </main>
 
-function updateCountdown() {
-  const today = chicagoDate();
-  const birthday = new Date("2026-12-18T12:00:00-06:00");
-  const now = new Date();
-  const days = Math.max(0, Math.ceil((birthday - now) / 86400000));
-  document.getElementById("countdown").textContent =
-    today >= "2026-12-18" ? "TODAY IS YOUR DAY ♡" : '${days} DAYS UNTIL YOUR BIRTHDAY';
-}
+  <div aria-modal="true" aria-labelledby="modal-title">
+    <div>
+      <div></div>
 
-renderDays();
-updateCountdown();
-  <div>
-<div>
-<div></div>
-<h2></h2>
-<p></p>
-<button>close ♡</button>
-</div>
-</div>
-</script>
+      <h2></h2>
+
+      <p></p>
+
+      <a hidden></a>
+
+      <button>
+        close ♡
+      </button>
+    </div>
+  </div>
+
+  <script>
+    /*
+      EDIT YOUR GIFTS HERE.
+
+      Each gift has:
+      title: the name shown on the day
+      body: the message shown when Nikki opens it
+      link: optional website link
+      linkLabel: optional text for that link
+
+      You can change these whenever you want.
+    */
+
+    const gifts = [
+      {
+        title: "a little introduction",
+        body: "A little beginning to eighteen days of surprises. ♡"
+      },
+      {
+        title: "a cookie recipe",
+        body: "A sweet little recipe for us to make together someday. ♡"
+      },
+      {
+        title: "a playlist",
+        body: "A collection of songs that made me think of you."
+      },
+      {
+        title: "trivia about us",
+        body: "How well do you remember all our little moments? ♡"
+      },
+      {
+        title: "a poem",
+        body: "A little something written just for you."
+      },
+      {
+        title: "movie night",
+        body: "A little collection of movies for a future movie night together."
+      },
+      {
+        title: "100 reasons",
+        body: "One hundred little reasons why you mean so much to me."
+      },
+      {
+        title: "things i've never told you",
+        body: "Some things I've wanted to tell you for a while. ♡"
+      },
+      {
+        title: "a special letter",
+        body: "A letter with a little extra love in every word."
+      },
+      {
+        title: "things i want to do",
+        body: "A collection of little and big things I want us to experience together."
+      },
+      {
+        title: "things that remind me of you",
+        body: "All the little things that somehow always lead me back to you."
+      },
+      {
+        title: "surprise twelve",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "surprise thirteen",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "surprise fourteen",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "surprise fifteen",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "surprise sixteen",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "surprise seventeen",
+        body: "A little surprise is waiting for you. ♡"
+      },
+      {
+        title: "your birthday",
+        body: "Happy birthday, my love. ♡"
+      }
+    ];
+
+    const birthdayDate = "2026-12-18";
+
+    function getChicagoDate() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Chicago",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+
+      const values = {};
+
+      parts.forEach(part => {
+        values[part.type] = part.value;
+      });
+
+      return '${values.year}-${values.month}-${values.day}';
+    }
+
+    function updateCountdown() {
+      const today = getChicagoDate();
+      const countdown = document.getElementById("countdown");
+
+      if (today >= birthdayDate) {
+        countdown.textContent = "HAPPY BIRTHDAY, NIKKI ♡";
+        return;
+      }
+
+      const todayDate = new Date('${today}T12:00:00Z');
+      const targetDate = new Date('${birthdayDate}T12:00:00Z');
+
+      const days = Math.ceil(
+        (targetDate - todayDate) / (1000 * 60 * 60 * 24)
+      );
+
+      countdown.textContent = '${days} DAYS UNTIL YOUR BIRTHDAY';
+    }
+
+    function renderDays() {
+      const container = document.getElementById("days");
+      const today = getChicagoDate();
+
+      container.innerHTML = "";
+
+      gifts.forEach((gift, index) => {
+        const number = index + 1;
+        const date = '2026-12-${String(number).padStart(2, "0")}';
+        const unlocked = today >= date;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "day";
+        button.disabled = !unlocked;
+
+        const dayNumber = document.createElement("span");
+        dayNumber.className = "day-number";
+        dayNumber.textContent = 'DAY ${String(number).padStart(2, "0")}';
+
+        const dayName = document.createElement("span");
+        dayName.className = "day-name";
+        dayName.textContent = gift.title;
+
+        const dayStatus = document.createElement("span");
+        dayStatus.className = "day-status";
+        dayStatus.textContent = unlocked
+          ? "✦ open your surprise"
+          : "✧ still waiting";
+
+        button.append(dayNumber, dayName, dayStatus);
+
+        if (unlocked) {
+          button.addEventListener("click", () => openGift(number));
+        }
+
+        container.appendChild(button);
+      });
+    }
+
+    function openGift(number) {
+      const today = getChicagoDate();
+      const date = '2026-12-${String(number).padStart(2, "0")}';
+
+      if (today < date) return;
+
+      const gift = gifts[number - 1];
+
+      document.getElementById("modal-day").textContent =
+        'DAY ${String(number).padStart(2, "0")}';
+
+      document.getElementById("modal-title").textContent = gift.title;
+      document.getElementById("modal-body").textContent = gift.body || "";
+
+      const link = document.getElementById("modal-link");
+
+      if (gift.link) {
+        link.href = gift.link;
+        link.textContent = gift.linkLabel || "open your surprise ♡";
+        link.hidden = false;
+      } else {
+        link.hidden = true;
+        link.removeAttribute("href");
+        link.textContent = "";
+      }
+
+      document.getElementById("modal").classList.add("show");
+      document.getElementById("close-button").focus();
+    }
+
+    function closeGift() {
+      document.getElementById("modal").classList.remove("show");
+    }
+
+    document.getElementById("close-button").addEventListener("click", closeGift);
+
+    document.getElementById("modal").addEventListener("click", event => {
+      if (event.target.id === "modal") {
+        closeGift();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeGift();
+      }
+    });
+
+    updateCountdown();
+    renderDays();
+  </script>
+
 </body>
 </html>
