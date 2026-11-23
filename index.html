@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta>
-  <meta>
-  <meta>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eighteen little surprises for Nikki's birthday.">
   <title>Happy Birthday, Nikki ♡</title>
 
-  <link>
-  <link crossorigin>
-  <link>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -298,50 +298,50 @@
 
 <body>
 
-  <div aria-hidden="true">
-    <span>✦</span>
-    <span>✧</span>
-    <span>✦</span>
-    <span>✧</span>
-    <span>✦</span>
-    <span>✧</span>
-    <span>·</span>
-    <span>·</span>
+  <div class="stars" aria-hidden="true">
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">✦</span>
+    <span class="star">✧</span>
+    <span class="star">·</span>
+    <span class="star">·</span>
   </div>
 
   <main>
     <header>
-      <div>a little something made for you</div>
+      <div class="eyebrow">a little something made for you</div>
 
       <h1>happy 15th birthday,<br>nikki ♡</h1>
 
-      <p>
+      <p class="intro">
         eighteen little surprises, one day at a time.
       </p>
 
-      <div>
+      <div class="countdown" id="countdown">
         YOUR BIRTHDAY COUNTDOWN
       </div>
     </header>
 
-    <h2>your eighteen days</h2>
+    <h2 class="section-heading">your eighteen days</h2>
 
-    <section aria-label="Birthday surprises"></section>
+    <section class="days" id="days" aria-label="Birthday surprises"></section>
 
     <footer>made with so much thought ♡</footer>
   </main>
 
-  <div aria-modal="true" aria-labelledby="modal-title">
-    <div>
-      <div></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-day" id="modal-day"></div>
 
-      <h2></h2>
+      <h2 id="modal-title"></h2>
 
-      <p></p>
+      <p id="modal-body"></p>
 
-      <a hidden></a>
+      <a class="gift-link" id="modal-link" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
 
-      <button>
+      <button class="close" id="close-button" type="button">
         close ♡
       </button>
     </div>
@@ -451,7 +451,7 @@
         values[part.type] = part.value;
       });
 
-      return '${values.year}-${values.month}-${values.day}';
+      return `${values.year}-${values.month}-${values.day}`;
     }
 
     function updateCountdown() {
@@ -463,14 +463,14 @@
         return;
       }
 
-      const todayDate = new Date('${today}T12:00:00Z');
-      const targetDate = new Date('${birthdayDate}T12:00:00Z');
+      const todayDate = new Date(`${today}T12:00:00Z`);
+      const targetDate = new Date(`${birthdayDate}T12:00:00Z`);
 
       const days = Math.ceil(
         (targetDate - todayDate) / (1000 * 60 * 60 * 24)
       );
 
-      countdown.textContent = '${days} DAYS UNTIL YOUR BIRTHDAY';
+      countdown.textContent = `${days} DAYS UNTIL YOUR BIRTHDAY`;
     }
 
     function renderDays() {
@@ -481,7 +481,7 @@
 
       gifts.forEach((gift, index) => {
         const number = index + 1;
-        const date = '2026-12-${String(number).padStart(2, "0")}';
+        const date = `2026-12-${String(number).padStart(2, "0")}`;
         const unlocked = today >= date;
 
         const button = document.createElement("button");
@@ -491,7 +491,7 @@
 
         const dayNumber = document.createElement("span");
         dayNumber.className = "day-number";
-        dayNumber.textContent = 'DAY ${String(number).padStart(2, "0")}';
+        dayNumber.textContent = `DAY ${String(number).padStart(2, "0")}`;
 
         const dayName = document.createElement("span");
         dayName.className = "day-name";
@@ -515,14 +515,14 @@
 
     function openGift(number) {
       const today = getChicagoDate();
-      const date = '2026-12-${String(number).padStart(2, "0")}';
+      const date = `2026-12-${String(number).padStart(2, "0")}`;
 
       if (today < date) return;
 
       const gift = gifts[number - 1];
 
       document.getElementById("modal-day").textContent =
-        'DAY ${String(number).padStart(2, "0")}';
+        `DAY ${String(number).padStart(2, "0")}`;
 
       document.getElementById("modal-title").textContent = gift.title;
       document.getElementById("modal-body").textContent = gift.body || "";
