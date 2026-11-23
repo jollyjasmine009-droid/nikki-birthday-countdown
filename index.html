@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --bg: #11101a;
@@ -185,13 +185,15 @@
       letter-spacing: 2px;
     }
 
+    /* DAY POPUP */
+
     .modal {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 5;
-      padding: 20px;
-      background: rgba(8, 7, 14, .82);
+      padding: 16px;
+      background: rgba(8, 7, 14, .86);
       align-items: center;
       justify-content: center;
     }
@@ -203,15 +205,17 @@
     .modal-content {
       position: relative;
       width: 100%;
-      max-width: 480px;
-      max-height: 85vh;
+      max-width: 700px;
+      max-height: 90vh;
       overflow-y: auto;
-      padding: 45px 30px;
+      padding: 35px 28px;
       border: 1px solid var(--border);
-      border-radius: 18px;
-      background: var(--panel);
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(110, 79, 150, .13), transparent 65%),
+        var(--panel);
       text-align: center;
-      animation: appear .25s ease;
+      animation: appear .3s ease;
     }
 
     @keyframes appear {
@@ -230,14 +234,205 @@
       font-size: 30px;
       font-weight: 500;
       color: var(--light-purple);
-      margin: 17px 0;
+      margin: 15px 0 25px;
     }
 
-    .modal-content p {
+    /* GIFT AND ENVELOPE LAYOUT */
+
+    .gift-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 18px;
+      align-items: stretch;
+      text-align: left;
+    }
+
+    .gift-card {
+      min-width: 0;
+      padding: 24px 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(10, 9, 17, .35);
+    }
+
+    .gift-label {
+      color: var(--purple);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .gift-card h3 {
+      color: var(--light-purple);
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 23px;
+      margin: 0 0 14px;
+    }
+
+    .gift-card p {
       color: var(--muted);
       font-size: 14px;
       line-height: 1.9;
       white-space: pre-wrap;
+      margin: 0;
+    }
+
+    .envelope-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 15px 8px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(185, 155, 232, .06);
+    }
+
+    .envelope-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      padding: 8px;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .envelope {
+      position: relative;
+      width: 105px;
+      height: 72px;
+      margin: 0 auto;
+      background: #b99be8;
+      border-radius: 5px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, .25);
+      transition: transform .25s ease;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #d9c9f2;
+      clip-path: polygon(0 0, 50% 52%, 100% 0);
+      border-radius: 5px 5px 0 0;
+      transform-origin: top;
+      transition: transform .35s ease;
+      z-index: 2;
+    }
+
+    .envelope::after {
+      content: "♡";
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      color: #5b456f;
+      font-size: 24px;
+      z-index: 3;
+    }
+
+    .envelope-button:hover .envelope {
+      transform: translateY(-5px) rotate(-2deg);
+    }
+
+    .envelope-button:active .envelope {
+      transform: scale(.96);
+    }
+
+    .envelope-caption {
+      color: var(--light-purple);
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+    }
+
+    .envelope-hint {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* LETTER */
+
+    .letter-panel {
+      display: none;
+      margin-top: 22px;
+      padding: 27px 23px;
+      border: 1px solid rgba(185, 155, 232, .35);
+      border-radius: 15px;
+      background: #eee5f4;
+      color: #41364d;
+      text-align: left;
+      animation: letterAppear .45s ease;
+    }
+
+    .letter-panel.show {
+      display: block;
+    }
+
+    @keyframes letterAppear {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .letter-top {
+      text-align: center;
+      color: #80669c;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .letter-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 25px;
+      color: #59446d;
+      text-align: center;
+      margin: 0 0 20px;
+    }
+
+    .letter-text {
+      color: #51465c;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 2;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .letter-signoff {
+      color: #80669c;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      text-align: right;
+      margin-top: 22px;
+    }
+
+    .close-letter {
+      display: block;
+      margin: 22px auto 0;
+      padding: 10px 20px;
+      border: 1px solid rgba(89, 68, 109, .3);
+      border-radius: 25px;
+      background: transparent;
+      color: #59446d;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .close-letter:hover {
+      background: rgba(89, 68, 109, .08);
     }
 
     .close {
@@ -253,16 +448,6 @@
 
     .close:hover {
       background: rgba(185, 155, 232, .12);
-    }
-
-    .gift-link {
-      display: inline-block;
-      margin-top: 15px;
-      color: var(--light-purple);
-      text-decoration: none;
-      border-bottom: 1px solid var(--purple);
-      padding-bottom: 4px;
-      font-size: 13px;
     }
 
     @media (max-width: 600px) {
@@ -290,7 +475,19 @@
       }
 
       .modal-content {
-        padding: 40px 22px;
+        padding: 30px 17px;
+      }
+
+      .gift-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .envelope-area {
+        min-height: 145px;
+      }
+
+      .gift-card {
+        padding: 22px 17px;
       }
     }
   </style>
@@ -333,17 +530,45 @@
 
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
+
       <div class="modal-day" id="modal-day"></div>
 
       <h2 id="modal-title"></h2>
 
-      <p id="modal-body"></p>
+      <div class="gift-layout">
 
-      <a class="gift-link" id="modal-link" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
+        <section class="gift-card">
+          <div class="gift-label">a little surprise for you</div>
+          <h3 id="gift-title"></h3>
+          <p id="gift-body"></p>
+        </section>
+
+        <section class="envelope-area">
+          <button class="envelope-button" id="envelope-button" type="button" aria-label="Open your letter">
+            <div class="envelope"></div>
+          </button>
+
+          <div class="envelope-caption">your letter ♡</div>
+          <div class="envelope-hint">there's something<br>inside for you</div>
+        </section>
+
+      </div>
+
+      <section class="letter-panel" id="letter-panel" aria-live="polite">
+        <div class="letter-top">a little note, just for you ♡</div>
+        <h3 id="letter-title">my sweet girl</h3>
+        <div class="letter-text" id="letter-text"></div>
+        <div class="letter-signoff">all my love ♡</div>
+
+        <button class="close-letter" id="close-letter" type="button">
+          close letter ♡
+        </button>
+      </section>
 
       <button class="close" id="close-button" type="button">
-        close ♡
+        close day ♡
       </button>
+
     </div>
   </div>
 
@@ -351,91 +576,110 @@
     /*
       EDIT YOUR GIFTS HERE.
 
-      Each gift has:
-      title: the name shown on the day
-      body: the message shown when Nikki opens it
-      link: optional website link
-      linkLabel: optional text for that link
+      title: gift name
+      body: gift description or content
+      letter: the letter for that day
 
-      You can change these whenever you want.
+      Later, we'll give each gift its own special design.
+      For now, this creates the gift-and-envelope experience.
     */
 
     const gifts = [
       {
         title: "a little introduction",
-        body: "A little beginning to eighteen days of surprises. ♡"
+        body: "eighteen days of little surprises, all made with you in mind. ♡",
+        letter: "your first little letter will go here. ♡"
       },
       {
         title: "a cookie recipe",
-        body: "A sweet little recipe for us to make together someday. ♡"
+        body: "a sweet little recipe for us to make together someday. ♡",
+        letter: "your cookie recipe letter will go here. ♡"
       },
       {
         title: "a playlist",
-        body: "A collection of songs that made me think of you."
+        body: "a collection of songs that made me think of you.",
+        letter: "your playlist letter will go here. ♡"
       },
       {
-        title: "trivia about us",
-        body: "How well do you remember all our little moments? ♡"
+        title: "christmas games",
+        body: "a few festive games for us to play together.",
+        letter: "your Christmas games letter will go here. ♡"
       },
       {
         title: "a poem",
-        body: "A little something written just for you."
+        body: "a little something written just for you, with two videos of me reading it.",
+        letter: "your poem letter will go here. ♡"
       },
       {
-        title: "movie night",
-        body: "A little collection of movies for a future movie night together."
+        title: "a christmas movie list",
+        body: "a little collection of movies for us to enjoy together.",
+        letter: "your movie list letter will go here. ♡"
       },
       {
-        title: "100 reasons",
-        body: "One hundred little reasons why you mean so much to me."
+        title: "100 reasons i love you",
+        body: "one hundred little reasons why you mean so much to me.",
+        letter: "your 100 reasons letter will go here. ♡"
       },
       {
         title: "things i've never told you",
-        body: "Some things I've wanted to tell you for a while. ♡"
+        body: "some thoughts and little things i've wanted to share with you.",
+        letter: "your never-told-you letter will go here. ♡"
       },
       {
-        title: "a special letter",
-        body: "A letter with a little extra love in every word."
+        title: "christmas activities",
+        body: "a collection of festive things for us to do together.",
+        letter: "your Christmas activities letter will go here. ♡"
       },
       {
-        title: "things i want to do",
-        body: "A collection of little and big things I want us to experience together."
+        title: "things i want to do with you",
+        body: "a collection of little and big things i want us to experience together.",
+        letter: "your things-to-do letter will go here. ♡"
       },
       {
         title: "things that remind me of you",
-        body: "All the little things that somehow always lead me back to you."
+        body: "all the little things that somehow always lead me back to you.",
+        letter: "your reminders letter will go here. ♡"
       },
       {
-        title: "surprise twelve",
-        body: "A little surprise is waiting for you. ♡"
+        title: "a video from me to you",
+        body: "a little video made especially for you.",
+        letter: "your video letter will go here. ♡"
       },
       {
-        title: "surprise thirteen",
-        body: "A little surprise is waiting for you. ♡"
+        title: "movie bingo",
+        body: "a little bingo game for our movie nights.",
+        letter: "your movie bingo letter will go here. ♡"
       },
       {
-        title: "surprise fourteen",
-        body: "A little surprise is waiting for you. ♡"
+        title: "a book of coupons",
+        body: "a little book filled with things you can redeem from me.",
+        letter: "your coupon book letter will go here. ♡"
       },
       {
-        title: "surprise fifteen",
-        body: "A little surprise is waiting for you. ♡"
+        title: "voice messages",
+        body: "a collection of little messages for you to listen to.",
+        letter: "your voice message letter will go here. ♡"
       },
       {
-        title: "surprise sixteen",
-        body: "A little surprise is waiting for you. ♡"
+        title: "when i knew i loved you",
+        body: "a little story about when i realised just how much you meant to me.",
+        letter: "your story letter will go here. ♡"
       },
       {
-        title: "surprise seventeen",
-        body: "A little surprise is waiting for you. ♡"
+        title: "a christmas scavenger hunt",
+        body: "a little hunt with clues and surprises waiting for you.",
+        letter: "your scavenger hunt letter will go here. ♡"
       },
       {
-        title: "your birthday",
-        body: "Happy birthday, my love. ♡"
+        title: "your birthday letter",
+        body: "a huge birthday letter, written with all the love i have for you.",
+        letter: "your big birthday letter will go here. ♡"
       }
     ];
 
     const birthdayDate = "2026-12-18";
+
+    let currentGiftNumber = null;
 
     function getChicagoDate() {
       const parts = new Intl.DateTimeFormat("en-US", {
@@ -494,13 +738,13 @@
         dayNumber.textContent = `DAY ${String(number).padStart(2, "0")}`;
 
         const dayName = document.createElement("span");
-dayName.className = "day-name";
-dayName.textContent = new Date(
-  `2026-12-${String(number).padStart(2, "0")}T12:00:00`
-).toLocaleDateString("en-US", {
-  month: "long",
-  day: "numeric"
-});
+        dayName.className = "day-name";
+        dayName.textContent = new Date(
+          `2026-12-${String(number).padStart(2, "0")}T12:00:00`
+        ).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric"
+        });
 
         const dayStatus = document.createElement("span");
         dayStatus.className = "day-status";
@@ -526,31 +770,52 @@ dayName.textContent = new Date(
 
       const gift = gifts[number - 1];
 
+      currentGiftNumber = number;
+
       document.getElementById("modal-day").textContent =
         `DAY ${String(number).padStart(2, "0")}`;
 
-      document.getElementById("modal-title").textContent = gift.title;
-      document.getElementById("modal-body").textContent = gift.body || "";
+      document.getElementById("modal-title").textContent =
+        new Date(`${date}T12:00:00`).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric"
+        });
 
-      const link = document.getElementById("modal-link");
+      document.getElementById("gift-title").textContent = gift.title;
+      document.getElementById("gift-body").textContent = gift.body || "";
 
-      if (gift.link) {
-        link.href = gift.link;
-        link.textContent = gift.linkLabel || "open your surprise ♡";
-        link.hidden = false;
-      } else {
-        link.hidden = true;
-        link.removeAttribute("href");
-        link.textContent = "";
-      }
+      document.getElementById("letter-title").textContent = "my sweet girl";
+      document.getElementById("letter-text").textContent = gift.letter || "";
+      document.getElementById("letter-panel").classList.remove("show");
 
       document.getElementById("modal").classList.add("show");
       document.getElementById("close-button").focus();
     }
 
+    function openLetter() {
+      if (currentGiftNumber === null) return;
+
+      document.getElementById("letter-panel").classList.add("show");
+
+      document.getElementById("letter-panel").scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    function closeLetter() {
+      document.getElementById("letter-panel").classList.remove("show");
+    }
+
     function closeGift() {
       document.getElementById("modal").classList.remove("show");
+      document.getElementById("letter-panel").classList.remove("show");
+      currentGiftNumber = null;
     }
+
+    document.getElementById("envelope-button").addEventListener("click", openLetter);
+
+    document.getElementById("close-letter").addEventListener("click", closeLetter);
 
     document.getElementById("close-button").addEventListener("click", closeGift);
 
