@@ -714,6 +714,124 @@
   border: 1px solid rgba(185, 155, 232, .3);
 }
 
+   
+/* DAY 4 CHRISTMAS ARCADE */
+
+.christmas-games-content[hidden] {
+  display: none;
+}
+
+.christmas-games-content {
+  padding: 26px 17px;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at top, rgba(185,155,232,.13), transparent 65%),
+    linear-gradient(160deg, #292238, #211d30 75%);
+  color: #f4effa;
+  text-align: center;
+  border: 1px solid rgba(185,155,232,.28);
+  overflow: hidden;
+}
+
+.arcade-stars {
+  color: #d9c9f2;
+  font-size: 17px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  opacity: .85;
+}
+
+.arcade-eyebrow {
+  color: #c6afdF;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.arcade-heading {
+  font-family: 'Playfair Display', serif;
+  color: #f4effa;
+  font-size: 27px;
+  line-height: 1.3;
+  font-weight: 500;
+  margin: 0 auto 14px;
+}
+
+.arcade-intro {
+  color: #c9bfd7;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.arcade-divider {
+  color: #b99be8;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin: 23px 0;
+}
+
+.arcade-challenge {
+  padding: 20px 15px;
+  border-radius: 12px;
+  background: rgba(17,16,26,.55);
+  border: 1px solid rgba(185,155,232,.2);
+}
+
+.arcade-challenge-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.arcade-challenge h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: #e4d5f7;
+  margin: 0 0 10px;
+}
+
+.arcade-challenge p {
+  color: #c9bfd7;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0 0 14px;
+}
+
+.arcade-challenge span {
+  color: #b99be8;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.arcade-button {
+  display: block;
+  margin: 22px auto 0;
+  padding: 15px 14px;
+  max-width: 270px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #b99be8, #9276bd);
+  color: #171321;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 5px 18px rgba(185,155,232,.18);
+}
+
+.arcade-button:active {
+  transform: scale(.97);
+}
+
+.arcade-footer {
+  color: #9e91b1;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 22px;
+}
+ 
   </style>
 </head>
 
@@ -916,10 +1034,11 @@
 },
 
       {
-        title: "christmas games",
-        body: "a few festive games for us to play together.",
-        letter: "your Christmas games letter will go here. ♡"
-      },
+  type: "christmas-games",
+  title: "the little christmas arcade",
+  body: "a little collection of christmas games for you to enjoy. ♡",
+  letter: "your day 4 letter will go here. ♡",
+},
       {
         title: "a poem",
         body: "a little something written just for you, with two videos of me reading it.",
@@ -1113,9 +1232,8 @@ const giftBody = document.getElementById("gift-body");
 recipeContent.hidden = gift.type !== "recipe";
 playlistContent.hidden = gift.type !== "playlist";
 
-giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist";
-giftBody.hidden = gift.type === "recipe" || gift.type === "playlist";
-
+giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
+giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
 if (gift.type === "playlist") {
   playlistFrame.src =
     "https://open.spotify.com/embed/playlist/0pSdo3lbKhLJDEyE8cDoXB";
