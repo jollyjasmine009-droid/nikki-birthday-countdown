@@ -542,6 +542,105 @@
   max-width: 340px;
   margin: 14px auto 0;
 }
+    
+/* DAY 2 COOKIE RECIPE */
+
+.recipe-content[hidden] {
+  display: none;
+}
+
+.recipe-content {
+  padding: 24px 18px;
+  border-radius: 12px;
+  background: #f3eadc;
+  color: #514235;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .18);
+}
+
+.recipe-topline {
+  color: #987b65;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.recipe-cookie {
+  font-size: 38px;
+  margin: 8px 0;
+}
+
+.recipe-heading {
+  color: #594334;
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.recipe-intro {
+  color: #806b59 !important;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px !important;
+  line-height: 1.7 !important;
+  max-width: 280px;
+  margin: 0 auto !important;
+}
+
+.recipe-divider {
+  color: #b28c70;
+  margin: 20px 0;
+  letter-spacing: 7px;
+}
+
+.recipe-section {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.recipe-section h5 {
+  color: #76543f;
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0 0 13px;
+  text-align: center;
+}
+
+.recipe-section ul,
+.recipe-section ol {
+  padding-left: 22px;
+  margin: 0;
+}
+
+.recipe-section li {
+  color: #594b40;
+  font-size: 12px;
+  line-height: 1.8;
+  padding-left: 5px;
+  margin-bottom: 7px;
+}
+
+.recipe-section li::marker {
+  color: #a77e60;
+}
+
+.recipe-footer {
+  color: #987b65;
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  margin-top: 25px;
+}
+#gift-card:has(#recipe-content:not([hidden])) {
+  padding: 12px;
+  background: #f3eadc;
+  border: 1px solid #c5a98e;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .2);
+}
+
+#gift-card:has(#recipe-content:not([hidden])) .gift-label {
+  display: none;
+}
   </style>
 </head>
 
@@ -598,6 +697,31 @@
     <span>✦</span>
     <span>✧</span>
   </div>
+          
+<div id="recipe-content" class="recipe-content" hidden>
+  <div class="recipe-topline">A LITTLE SOMETHING HOMEMADE</div>
+  <div class="recipe-cookie">🍪</div>
+  <h4 class="recipe-heading">chocolate chip cookies</h4>
+  <p class="recipe-intro">
+    a classic little treat, made with lots of chocolate and a little bit of love.
+  </p>
+  <div class="recipe-divider">✦ ✧ ✦</div>
+
+  <section class="recipe-section">
+    <h5>the ingredients</h5>
+    <ul id="recipe-ingredients"></ul>
+  </section>
+
+  <div class="recipe-divider">✧</div>
+
+  <section class="recipe-section">
+    <h5>the instructions</h5>
+    <ol id="recipe-instructions"></ol>
+  </section>
+
+  <div class="recipe-footer">made for a sweet day ♡</div>
+</div>
+
 </section>
 
         <section class="envelope-area">
@@ -676,7 +800,6 @@
     "Bake for approximately 8–10 minutes. Take them out when they are just barely starting to turn brown.",
     "Done! Let them cool and enjoy."
   ]
-},
 
       },
       {
@@ -871,6 +994,36 @@ const TEST_DATE = "2026-12-18";
 
       document.getElementById("gift-title").textContent = gift.title;
       document.getElementById("gift-body").textContent = gift.body || "";
+      
+const recipeContent = document.getElementById("recipe-content");
+const giftTitle = document.getElementById("gift-title");
+const giftBody = document.getElementById("gift-body");
+
+recipeContent.hidden = gift.type !== "recipe";
+
+giftTitle.hidden = gift.type === "recipe";
+giftBody.hidden = gift.type === "recipe";
+
+if (gift.type === "recipe") {
+  const ingredientsList = document.getElementById("recipe-ingredients");
+  const instructionsList = document.getElementById("recipe-instructions");
+
+  ingredientsList.innerHTML = "";
+  instructionsList.innerHTML = "";
+
+  gift.ingredients.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ingredientsList.appendChild(li);
+  });
+
+  gift.instructions.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    instructionsList.appendChild(li);
+  });
+}
+
       const dayOneDecoration = document.getElementById("day-one-decoration");
 dayOneDecoration.hidden = number !== 1;
 
