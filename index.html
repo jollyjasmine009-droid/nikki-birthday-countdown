@@ -679,9 +679,13 @@
 
     const birthdayDate = "2026-12-18";
 
+    const TEST_MODE = true;
+const TEST_DATE = "2026-12-18";
+
     let currentGiftNumber = null;
 
     function getChicagoDate() {
+      if (TEST_MODE) return TEST_DATE;
       const parts = new Intl.DateTimeFormat("en-US", {
         timeZone: "America/Chicago",
         year: "numeric",
