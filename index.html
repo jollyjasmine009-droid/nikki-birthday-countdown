@@ -641,6 +641,79 @@
 #gift-card:has(#recipe-content:not([hidden])) .gift-label {
   display: none;
 }
+    
+/* DAY 3 PLAYLIST */
+
+.playlist-content[hidden] {
+  display: none;
+}
+
+.playlist-content {
+  padding: 25px 16px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #292238, #211d30);
+  color: #f4effa;
+  text-align: center;
+  border: 1px solid rgba(185, 155, 232, .25);
+}
+
+.playlist-decoration {
+  color: #cbb5eb;
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin-bottom: 22px;
+  text-shadow: 0 0 15px rgba(185, 155, 232, .35);
+}
+
+.playlist-eyebrow {
+  color: #b99be8;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-bottom: 13px;
+}
+
+.playlist-heading {
+  color: #e5d8f5;
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.playlist-intro {
+  color: #c5bdcf !important;
+  font-size: 12px !important;
+  line-height: 1.9 !important;
+  max-width: 300px;
+  margin: 0 auto !important;
+}
+
+.playlist-divider {
+  color: #b99be8;
+  letter-spacing: 7px;
+  margin: 23px 0;
+}
+
+.spotify-frame {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+
+.playlist-footer {
+  color: #bba9d4;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  margin-top: 22px;
+  font-style: italic;
+}
+
+#gift-card:has(#playlist-content:not([hidden])) {
+  padding: 12px;
+  background: #211d30;
+  border: 1px solid rgba(185, 155, 232, .3);
+}
+
   </style>
 </head>
 
@@ -722,6 +795,37 @@
   <div class="recipe-footer">made for a sweet day ♡</div>
 </div>
 
+<div id="playlist-content" class="playlist-content" hidden>
+  <div class="playlist-decoration">♪　✧　♫</div>
+
+  <div class="playlist-eyebrow">A LITTLE COLLECTION OF MUSIC</div>
+
+  <h4 class="playlist-heading">songs for you ♡</h4>
+
+  <p class="playlist-intro">
+    some songs, some feelings, and a little piece of thought behind each one.
+  </p>
+
+  <div class="playlist-divider">✦ ✧ ✦</div>
+
+  <div class="spotify-frame">
+    <iframe
+      id="spotify-player"
+      style="border-radius:12px"
+      src=""
+      width="100%"
+      height="352"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="playlist-footer">
+    press play, and enjoy your little soundtrack ♡
+  </div>
+</div>
+
 </section>
 
         <section class="envelope-area">
@@ -798,14 +902,14 @@
     "Stir in the chocolate chips until evenly distributed.",
     "Roll the cookies into balls as large as you'd like.",
     "Bake for approximately 8–10 minutes. Take them out when they are just barely starting to turn brown.",
-     "Done! Let them cool and enjoy."
-  ]
+     "Done! Let them cool and 
+ {
+  type: "playlist",
+  title: "songs for you",
+  body: "a little collection of songs, each chosen with you in mind. ♡",
+  letter: "your playlist letter will go here. ♡",
+  playlistUrl: "https://open.spotify.com/playlist/0pSdo3lbKhLJDEyE8cDoXB"
 },
-{
-  title: "a playlist",
-        body: "a collection of songs that made me think of you.",
-        letter: "your playlist letter will go here. ♡"
-      },
       {
         title: "christmas games",
         body: "a few festive games for us to play together.",
@@ -994,14 +1098,28 @@ const TEST_DATE = "2026-12-18";
       document.getElementById("gift-title").textContent = gift.title;
       document.getElementById("gift-body").textContent = gift.body || "";
       
+
 const recipeContent = document.getElementById("recipe-content");
+const playlistContent = document.getElementById("playlist-content");
+const playlistFrame = document.getElementById("spotify-player");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
 recipeContent.hidden = gift.type !== "recipe";
+playlistContent.hidden = gift.type !== "playlist";
 
-giftTitle.hidden = gift.type === "recipe";
-giftBody.hidden = gift.type === "recipe";
+giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist";
+giftBody.hidden = gift.type === "recipe" || gift.type === "playlist";
+
+if (gift.type === "playlist") {
+  playlistFrame.src = gift.playlistUrl.replace(
+    "open.spotify.com/playlist/",
+    "open.spotify.com/embed/playlist/"
+  );
+} else {
+  playlistFrame.src = "";
+}
+
 
 if (gift.type === "recipe") {
   const ingredientsList = document.getElementById("recipe-ingredients");
