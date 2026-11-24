@@ -939,12 +939,50 @@
     </iframe>
   </div>
 
+
   <div class="playlist-footer">
     press play, and enjoy your little soundtrack ♡
   </div>
 </div>
 
+<div id="christmas-games-content" class="christmas-games-content" hidden>
+  <div class="arcade-stars">✦　❄　✧　❄　✦</div>
+
+  <div class="arcade-eyebrow">A LITTLE FESTIVE FUN</div>
+
+  <h4 class="arcade-heading">the little christmas arcade</h4>
+
+  <p class="arcade-intro">
+    a little collection of christmas games for you to enjoy.
+    take a break, have some fun, and get into the christmas spirit. ♡
+  </p>
+
+  <div class="arcade-divider">✧ ───── ✧</div>
+
+  <div class="arcade-challenge">
+    <div class="arcade-challenge-icon">🎄</div>
+    <h5>your christmas challenge</h5>
+    <p>
+      Try out the games and see how many you can complete.
+      Your mission is to have as much fun as possible!
+    </p>
+    <span>READY, PLAYER ONE?</span>
+  </div>
+
+  <a
+    class="arcade-button"
+    href="https://www.kiloo.com/games/christmas"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    enter the christmas arcade ♡
+  </a>
+
+  <div class="arcade-footer">made for a little christmas fun ✦</div>
+</div>
+
 </section>
+
 
         <section class="envelope-area">
           <button class="envelope-button" id="envelope-button" type="button" aria-label="Open your letter">
@@ -1225,15 +1263,20 @@ const TEST_DATE = "2026-12-18";
 
 const recipeContent = document.getElementById("recipe-content");
 const playlistContent = document.getElementById("playlist-content");
-const playlistFrame = document.getElementById("spotify-player");
+const playlistFrame = document.getElementById("spotify-const christmasGamesContent = document.getElementById("christmas-games-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
 recipeContent.hidden = gift.type !== "recipe";
 playlistContent.hidden = gift.type !== "playlist";
+christmasGamesContent.hidden = gift.type !== "christmas-games";   
 
 giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
 giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
+document.getElementById("gift-label").hidden =
+  gift.type === "recipe" ||
+  gift.type === "playlist" ||
+  gift.type === "christmas-games";
 if (gift.type === "playlist") {
   playlistFrame.src =
     "https://open.spotify.com/embed/playlist/0pSdo3lbKhLJDEyE8cDoXB";
