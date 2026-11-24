@@ -1117,14 +1117,11 @@ giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist";
 giftBody.hidden = gift.type === "recipe" || gift.type === "playlist";
 
 if (gift.type === "playlist") {
-  playlistFrame.src = gift.playlistUrl.replace(
-    "open.spotify.com/playlist/",
-    "open.spotify.com/embed/playlist/"
-  );
+  playlistFrame.src =
+    "https://open.spotify.com/embed/playlist/0pSdo3lbKhLJDEyE8cDoXB";
 } else {
   playlistFrame.src = "";
 }
-
 
 if (gift.type === "recipe") {
   const ingredientsList = document.getElementById("recipe-ingredients");
