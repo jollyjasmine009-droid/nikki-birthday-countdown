@@ -490,6 +490,58 @@
         padding: 22px 17px;
       }
     }
+    .day-one-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 30px;
+  color: #b99be8;
+  font-size: 17px;
+  opacity: 0.8;
+}
+
+.day-one-decoration span:nth-child(2) {
+  font-size: 23px;
+  color: #d9c9f2;
+  text-shadow: 0 0 14px rgba(185, 155, 232, 0.55);
+}
+
+.day-one-decoration[hidden] {
+  display: none;
+}
+    /* DAY 1 INTRODUCTION */
+#gift-card:has(#day-one-decoration:not([hidden])) {
+  background: linear-gradient(
+    145deg,
+    #252035,
+    #1c1928 75%
+  );
+  border: 1px solid rgba(185, 155, 232, 0.3);
+  padding: 30px 24px;
+}
+
+#gift-card:has(#day-one-decoration:not([hidden])) .gift-label {
+  color: #cbb5eb;
+  letter-spacing: 3px;
+  font-size: 10px;
+}
+
+#gift-card:has(#day-one-decoration:not([hidden])) #gift-title {
+  color: #e5d8f5;
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#gift-card:has(#day-one-decoration:not([hidden])) #gift-body {
+  color: #c5bdcf;
+  text-align: center;
+  line-height: 1.9;
+  max-width: 340px;
+  margin: 14px auto 0;
+}
   </style>
 </head>
 
@@ -537,11 +589,16 @@
 
       <div class="gift-layout">
 
-        <section class="gift-card">
-          <div class="gift-label">a little surprise for you</div>
-          <h3 id="gift-title"></h3>
-          <p id="gift-body"></p>
-        </section>
+        <section class="gift-card" id="gift-card">
+  <div class="gift-label" id="gift-label">a little surprise for you</div>
+  <h3 id="gift-title"></h3>
+  <p id="gift-body"></p>
+  <div id="day-one-decoration" class="day-one-decoration" hidden>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+  </div>
+</section>
 
         <section class="envelope-area">
           <button class="envelope-button" id="envelope-button" type="button" aria-label="Open your letter">
@@ -787,6 +844,8 @@ const TEST_DATE = "2026-12-18";
 
       document.getElementById("gift-title").textContent = gift.title;
       document.getElementById("gift-body").textContent = gift.body || "";
+      const dayOneDecoration = document.getElementById("day-one-decoration");
+dayOneDecoration.hidden = number !== 1;
 
       document.getElementById("letter-title").textContent = "a little note for you";
       document.getElementById("letter-text").textContent = gift.letter || "";
