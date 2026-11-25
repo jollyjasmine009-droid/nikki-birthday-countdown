@@ -831,7 +831,66 @@
   letter-spacing: 1px;
   margin-top: 22px;
 }
- 
+ /* DAY 5: POEM */
+
+.poem-content {
+  background: linear-gradient(145deg, #f1e9df, #e8deeb);
+  color: #342b3d;
+  border: 1px solid rgba(217, 201, 242, 0.6);
+  border-radius: 18px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.poem-stars {
+  color: #8c70a9;
+  font-size: 18px;
+  letter-spacing: 8px;
+  margin-bottom: 22px;
+}
+
+.poem-eyebrow {
+  color: #8c7797;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.poem-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #493b54;
+  margin: 0 auto 18px;
+}
+
+.poem-divider {
+  color: #9c80b3;
+  margin: 20px 0 25px;
+  font-size: 13px;
+}
+
+.poem-text {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  line-height: 2;
+  color: #493e4d;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.poem-footer {
+  color: #8c7797;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 30px;
+}
   </style>
 </head>
 
@@ -980,7 +1039,14 @@
 
   <div class="arcade-footer">made for a little christmas fun ✦</div>
 </div>
-
+<div id="poem-content" class="poem-content" hidden>
+  <div class="poem-stars">✦　✧　✦</div>
+  <p class="poem-eyebrow">A LITTLE SOMETHING WRITTEN FOR YOU</p>
+  <h4 class="poem-heading">for the girl who turned fifteen</h4>
+  <div class="poem-divider">✧ ───── ✧</div>
+  <div id="poem-text" class="poem-text"></div>
+  <div class="poem-footer">written with care, just for you ♡</div>
+</div>
 </section>
 
 
@@ -1077,11 +1143,42 @@
   body: "a little collection of christmas games for you to enjoy. ♡",
   letter: "your day 4 letter will go here. ♡",
 },
-      {
-        title: "a poem",
-        body: "a little something written just for you, with two videos of me reading it.",
-        letter: "your poem letter will go here. ♡"
-      },
+{
+  type: "poem",
+  title: "a poem",
+  body: "a little something written just for you.",
+  letter: "your poem letter will go here. ♡",
+  poem: `i didn’t expect to fall for you,
+ to notice such little things but i do
+ i notice when you scrunch you nose so hard it looks like a bell
+ or how you hate cash cause it makes your hands smell
+ you don’t like scary movies, or storms
+ they’re big and loud and you hate how they make you feel
+ when you don’t get your way, you always say “let’s make a deal”
+ you can’t pronounce the “th” in words, even though you swear you can
+ you look up corny jokes when i’m sad to try and make me laugh
+ when you tell a joke, you say “get it,” after every one, it’s become a pattern
+i’ve learned all of these things in a few months, and i have so much more to learn
+ like how you like your eggs cooked
+ or the position you sleep in at night
+ how to shut you up with a single look
+ and how to do everything just right for you
+now it’s your birthday, a day to celebrate, a day of memories that’ll last forever
+ it feels like i’ve known you that long, even tho i haven’t
+ who knew that your love would become such a habit
+we’re not just celebrating you, we’re celebrating the little girl behind the glasses
+ the one who tried to light things on fire and broke her thumbs,
+ the one who never wanted to be girly and always took her own path
+ the one who thrives in math class
+now you’re fifteen and all those years seem so far away
+ but that little girl is still inside of you, and i get to love her everyday
+this day is filled with laughter and tears, a day where memories will be made, one where you feel loved and get to be a little selfish because it’s the day you were born
+ the day you altered the peoples lives forever
+little did you know, that one day you’d learn to walk and talk, you’d learn all your emotions, even when you can’t control them, you’d learn to be yourself, even when you hold back some, but that’s the person i love
+you altered my life and that’s because of that little girl who grew up into this beautiful person you are today
+so happy birthday baby, i hope it’s one to remember
+ and one that little girl will remember it forever`
+},
       {
         title: "a christmas movie list",
         body: "a little collection of movies for us to enjoy together.",
@@ -1265,20 +1362,27 @@ const recipeContent = document.getElementById("recipe-content");
 const playlistContent = document.getElementById("playlist-content");
 const playlistFrame = document.getElementById("spotify-player");
 const christmasGamesContent = document.getElementById("christmas-games-content");
+const poemContent = document.getElementById("poem-content");
+const poemText = document.getElementById("poem-text");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
 recipeContent.hidden = gift.type !== "recipe";
 playlistContent.hidden = gift.type !== "playlist";
 christmasGamesContent.hidden = gift.type !== "christmas-games";   
+poemContent.hidden = gift.type !== "poem";
 
-giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
-giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games";
+giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";
+giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
   gift.type === "playlist" ||
   gift.type === "christmas-games";
-if (gift.type === "playlist") {
+  gift.type === "poem";
+if (gift.type === "poem") {
+  poemText.textContent = gift.poem || "";
+}
+      if (gift.type === "playlist") {
   playlistFrame.src =
     "https://open.spotify.com/embed/playlist/0pSdo3lbKhLJDEyE8cDoXB";
 } else {
