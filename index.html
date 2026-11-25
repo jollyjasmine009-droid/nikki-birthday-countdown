@@ -891,6 +891,123 @@
   font-style: italic;
   margin-top: 30px;
 }
+    /* DAY 6: MOVIE COLLECTION */
+
+.movie-list-content {
+  background: linear-gradient(160deg, #211b2d, #171522);
+  border: 1px solid rgba(185, 155, 232, 0.25);
+  border-radius: 18px;
+  padding: 26px 19px;
+  color: #f4effa;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.movie-intro {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.movie-stars {
+  color: #c6a8ed;
+  font-size: 18px;
+  letter-spacing: 8px;
+  margin-bottom: 18px;
+}
+
+.movie-eyebrow {
+  color: #b99be8;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.movie-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #f4effa;
+  margin: 0 0 10px;
+}
+
+.movie-subtitle {
+  color: #b9afc7;
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.movie-divider {
+  color: #b99be8;
+  font-size: 13px;
+  margin-top: 22px;
+}
+
+.movie-category {
+  position: relative;
+  padding: 20px 0;
+  border-top: 1px solid rgba(185, 155, 232, 0.18);
+}
+
+.movie-number {
+  display: block;
+  color: #a88bcf;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-bottom: 7px;
+}
+
+.movie-category h5 {
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-weight: 500;
+  color: #e3d2f8;
+  margin: 0 0 14px;
+}
+
+.movie-category-note {
+  color: #b9afc7;
+  font-size: 11px;
+  font-style: italic;
+  margin: -5px 0 14px;
+}
+
+.movie-list {
+  display: grid;
+  gap: 7px;
+}
+
+.movie-item {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(185, 155, 232, 0.12);
+  border-radius: 9px;
+  padding: 10px 12px;
+  color: #e9e1f2;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.movie-together {
+  background: rgba(185, 155, 232, 0.055);
+  border: 1px solid rgba(185, 155, 232, 0.2);
+  border-radius: 13px;
+  padding: 19px 13px;
+  margin-top: 10px;
+}
+
+.movie-together h5 {
+  color: #d9c9f2;
+}
+
+.movie-footer {
+  text-align: center;
+  color: #a994c3;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 25px;
+}
   </style>
 </head>
 
@@ -1047,6 +1164,44 @@
   <div id="poem-text" class="poem-text"></div>
   <div class="poem-footer">written with care, just for you ♡</div>
 </div>
+  <div id="movie-list-content" class="movie-list-content" hidden>
+  <div class="movie-intro">
+  <div class="movie-stars">✦　✧　✦</div>
+  <p class="movie-eyebrow">A LITTLE COLLECTION OF FILMS</p>
+  <h4 class="movie-heading">the movie collection</h4>
+  <p class="movie-subtitle">
+    for every mood, every occasion, and every kind of movie night. ♡
+  </p>
+  <div class="movie-divider">✧ ───── ✧</div>
+</div>
+
+<div class="movie-category">
+  <span class="movie-number">01</span>
+  <h5>to cry to</h5>
+  <div class="movie-list" id="cry-movies"></div>
+</div>
+
+<div class="movie-category">
+  <span class="movie-number">02</span>
+  <h5>laughable</h5>
+  <div class="movie-list" id="funny-movies"></div>
+</div>
+
+<div class="movie-category">
+  <span class="movie-number">03</span>
+  <h5>rom-coms</h5>
+  <div class="movie-list" id="romcom-movies"></div>
+</div>
+
+<div class="movie-category movie-together">
+  <span class="movie-number">04</span>
+  <h5>ones we should watch together</h5>
+  <p class="movie-category-note">a little list for future movie nights ♡</p>
+  <div class="movie-list" id="together-movies"></div>
+</div>
+
+<div class="movie-footer">pick a film, get comfy, and enjoy ✦</div>
+</div>
 </section>
 
 
@@ -1180,10 +1335,74 @@ so happy birthday baby, i hope it’s one to remember
  and one that little girl will remember it forever`
 },
       {
-        title: "a christmas movie list",
-        body: "a little collection of movies for us to enjoy together.",
-        letter: "your movie list letter will go here. ♡"
-      },
+  type: "movie-list",
+  title: "the movie collection",
+  body: "a little collection of films for every mood. ♡",
+  letter: "your day 6 letter will go here. ♡",
+
+  movies: {
+    cry: [
+      "voicemails for isabelle",
+      "book of henry",
+      "don’t say good luck",
+      "straw",
+      "someone great",
+      "see you on venus",
+      "five feet apart",
+      "wonder",
+      "the boy in the striped pajamas",
+      "me before you",
+      "my girl",
+      "reminders of him"
+    ],
+
+    funny: [
+      "grown ups",
+      "roommates",
+      "stepbrothers",
+      "happy gilmore (1&2)",
+      "senior year",
+      "a family affair",
+      "ted",
+      "john tucker must die",
+      "bring it on",
+      "the little rascals"
+    ],
+
+    romcom: [
+      "the proposal",
+      "anyone but you",
+      "50 first dates",
+      "mr and mrs smith",
+      "lala land",
+      "27 dresses",
+      "13 going on 30",
+      "geek charming",
+      "STARSTRUCK",
+      "the notebook",
+      "how to lose a guy in 10 days",
+      "friends with benefits",
+      "beautiful disaster (and beautiful wedding)",
+      "the other zoey",
+      "after (the whole fucking series of movies)",
+      "regretting you",
+      "purple hearts",
+      "people we meet on vacation",
+      "all kissing booth movies",
+      "she’s the man"
+    ],
+
+    together: [
+      "10 things i hate about you",
+      "the santa clauses",
+      "hamilton",
+      "holidate",
+      "zombies movies",
+      "tangled",
+      "the grinch"
+    ]
+  }
+},
       {
         title: "100 reasons i love you",
         body: "one hundred little reasons why you mean so much to me.",
@@ -1364,6 +1583,11 @@ const playlistFrame = document.getElementById("spotify-player");
 const christmasGamesContent = document.getElementById("christmas-games-content");
 const poemContent = document.getElementById("poem-content");
 const poemText = document.getElementById("poem-text");
+const movieListContent = document.getElementById("movie-list-content");
+const cryMovies = document.getElementById("cry-movies");
+const funnyMovies = document.getElementById("funny-movies");
+const romcomMovies = document.getElementById("romcom-movies");
+const togetherMovies = document.getElementById("together-movies");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -1371,16 +1595,35 @@ recipeContent.hidden = gift.type !== "recipe";
 playlistContent.hidden = gift.type !== "playlist";
 christmasGamesContent.hidden = gift.type !== "christmas-games";   
 poemContent.hidden = gift.type !== "poem";
+movieListContent.hidden = gift.type !== "movie-list";
 
-giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";
-giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";
+giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";|| gift.type === "movie-list"
+giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";|| gift.type === "movie-list"
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
   gift.type === "playlist" ||
   gift.type === "christmas-games";
   gift.type === "poem";
+  gift.type === "movie-list"
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
+}
+      if (gift.type === "movie-list") {
+  const renderMovies = (container, movies) => {
+    container.innerHTML = "";
+
+    movies.forEach(movie => {
+      const item = document.createElement("div");
+      item.className = "movie-item";
+      item.textContent = movie;
+      container.appendChild(item);
+    });
+  };
+
+  renderMovies(cryMovies, gift.movies.cry);
+  renderMovies(funnyMovies, gift.movies.funny);
+  renderMovies(romcomMovies, gift.movies.romcom);
+  renderMovies(togetherMovies, gift.movies.together);
 }
       if (gift.type === "playlist") {
   playlistFrame.src =
