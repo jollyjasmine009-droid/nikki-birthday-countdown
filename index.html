@@ -1008,6 +1008,146 @@
   font-style: italic;
   margin-top: 25px;
 }
+  </div>
+</div>
+    /* DAY 7: 100 REASONS BOOK */
+
+.reasons-content[hidden] {
+  display: none;
+}
+
+.reasons-content {
+  position: relative;
+  padding: 30px 20px;
+  border: 1px solid rgba(185, 155, 232, 0.25);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at top, rgba(185, 155, 232, 0.12), transparent 65%),
+    #211d2d;
+  overflow: hidden;
+}
+
+.reasons-stars {
+  color: #d9c9f2;
+  text-align: center;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+  opacity: 0.8;
+}
+
+.reasons-eyebrow {
+  color: #b99be8;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.reasons-heading {
+  color: #f4effa;
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.reasons-intro {
+  color: #bdb3ca;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 280px;
+}
+
+.reasons-divider {
+  color: #b99be8;
+  text-align: center;
+  margin: 22px 0;
+  opacity: 0.75;
+}
+
+.reasons-page-label {
+  color: #b99be8;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.reasons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.reason-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 13px;
+  border: 1px solid rgba(217, 201, 242, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #f4effa;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.reason-number {
+  flex: 0 0 25px;
+  color: #b99be8;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.reason-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.reasons-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.reasons-navigation button {
+  padding: 9px 13px;
+  border: 1px solid rgba(185, 155, 232, 0.4);
+  border-radius: 20px;
+  background: rgba(185, 155, 232, 0.08);
+  color: #e6d9f7;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.reasons-navigation button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#reasons-page-number {
+  color: #bdb3ca;
+  font-size: 11px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.reasons-footer {
+  color: #a99bb9;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 24px;
+}
   </style>
 </head>
 
@@ -1202,6 +1342,41 @@
 
 <div class="movie-footer">pick a film, get comfy, and enjoy ✦</div>
 </div>
+       <div id="reasons-content" class="reasons-content" hidden>
+  <div class="reasons-stars">✦　✧　✦</div>
+
+  <div class="reasons-eyebrow">A COLLECTION OF LITTLE THINGS</div>
+
+  <h4 class="reasons-heading">100 little reasons</h4>
+
+  <p class="reasons-intro">
+    one hundred little things, gathered together in one place. ♡
+  </p>
+
+  <div class="reasons-divider">✧ ───── ✧</div>
+
+  <div class="reasons-page-label" id="reasons-page-label">
+    PAGE 01 OF 10
+  </div>
+
+  <div class="reasons-list" id="reasons-list"></div>
+
+  <div class="reasons-navigation">
+    <button id="reasons-previous" type="button" disabled>
+      ← previous
+    </button>
+
+    <span id="reasons-page-number">01 / 10</span>
+
+    <button id="reasons-next" type="button">
+      next →
+    </button>
+  </div>
+
+  <div class="reasons-footer">
+    one hundred little things ✦
+  </div>
+</div>   
 </section>
 
 
@@ -1766,24 +1941,24 @@ giftTitle.hidden =
   gift.type === "playlist" ||
   gift.type === "christmas-games" ||
   gift.type === "poem" ||
-  gift.type === "movie-list";
-  || gift.type === "reasons";
+  gift.type === "movie-list" ||
+  gift.type === "reasons";
 
 giftBody.hidden =
   gift.type === "recipe" ||
   gift.type === "playlist" ||
   gift.type === "christmas-games" ||
   gift.type === "poem" ||
-  gift.type === "movie-list";
-  || gift.type === "reasons";
+  gift.type === "movie-list" ||
+  gift.type === "reasons";
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
   gift.type === "playlist" ||
   gift.type === "christmas-games" ||
   gift.type === "poem" ||
-  gift.type === "movie-list";
-  || gift.type === "reasons";
+  gift.type === "movie-list" ||
+  gift.type === "reasons";
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
