@@ -1597,14 +1597,26 @@ christmasGamesContent.hidden = gift.type !== "christmas-games";
 poemContent.hidden = gift.type !== "poem";
 movieListContent.hidden = gift.type !== "movie-list";
 
-giftTitle.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";|| gift.type === "movie-list"
-giftBody.hidden = gift.type === "recipe" || gift.type === "playlist" || gift.type === "christmas-games" || gift.type === "poem";|| gift.type === "movie-list"
+giftTitle.hidden =
+  gift.type === "recipe" ||
+  gift.type === "playlist" ||
+  gift.type === "christmas-games" ||
+  gift.type === "poem" ||
+  gift.type === "movie-list";
+
+giftBody.hidden =
+  gift.type === "recipe" ||
+  gift.type === "playlist" ||
+  gift.type === "christmas-games" ||
+  gift.type === "poem" ||
+  gift.type === "movie-list";
+
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
   gift.type === "playlist" ||
-  gift.type === "christmas-games";
-  gift.type === "poem";
-  gift.type === "movie-list"
+  gift.type === "christmas-games" ||
+  gift.type === "poem" ||
+  gift.type === "movie-list";
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
