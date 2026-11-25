@@ -1148,6 +1148,103 @@
   text-align: center;
   margin-top: 24px;
 }
+    /* DAY 8: THINGS I'VE NEVER TOLD YOU */
+
+.never-told-content[hidden] {
+  display: none;
+}
+
+.never-told-content {
+  padding: 30px 20px;
+  border: 1px solid rgba(185, 155, 232, 0.25);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at top, rgba(185, 155, 232, 0.12), transparent 65%),
+    #211d2d;
+  overflow: hidden;
+}
+
+.never-told-stars {
+  color: #d9c9f2;
+  text-align: center;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+}
+
+.never-told-eyebrow {
+  color: #b99be8;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.never-told-heading {
+  color: #f4effa;
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.never-told-intro {
+  color: #bdb3ca;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.never-told-divider {
+  color: #b99be8;
+  text-align: center;
+  margin: 22px 0;
+}
+
+.never-told-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.never-told-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 13px;
+  border: 1px solid rgba(217, 201, 242, 0.13);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.never-told-number {
+  flex: 0 0 25px;
+  color: #b99be8;
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  text-align: center;
+}
+
+.never-told-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: #f4effa;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.never-told-footer {
+  color: #a99bb9;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 25px;
+}
   </style>
 </head>
 
@@ -1377,6 +1474,23 @@
     one hundred little things ✦
   </div>
 </div>   
+         <div id="never-told-content" class="never-told-content" hidden>
+  <div class="never-told-stars">✦　✧　✦</div>
+
+  <div class="never-told-eyebrow">A FEW THINGS LEFT UNSAID</div>
+
+  <h4 class="never-told-heading">things i've never told you</h4>
+
+  <p class="never-told-intro">
+    little thoughts, memories, and things i've wanted you to know. ♡
+  </p>
+
+  <div class="never-told-divider">✧ ───── ✧</div>
+
+  <div id="never-told-entries" class="never-told-entries"></div>
+
+  <div class="never-told-footer">a little piece of honesty ✦</div>
+</div> 
 </section>
 
 
@@ -1686,11 +1800,41 @@ so happy birthday baby, i hope it’s one to remember
     `i love how easy it was to write this. because i already know why i love you. and i could write 1,000 more. but there would never be enough reasons to fully explain the love i have for you. because there’s so much, it doesn’t fit in my heart, i don’t know how to express it. you’re my everything. and i love you for you. always.`
   ]
 },
-      {
-        title: "things i've never told you",
-        body: "some thoughts and little things i've wanted to share with you.",
-        letter: "your never-told-you letter will go here. ♡"
-      },
+{
+  type: "never-told-you",
+  title: "things i've never told you",
+  body: "some thoughts and little things i've wanted to share with you.",
+  letter: "your never-told-you letter will go here. ♡",
+  entries: [
+    `when we first met, i felt this ping in my chest, like i knew i was gonna start liking you, you gave me like a warm feeling on the inside that i had never felt before.`,
+
+    `the moment i started waking up with a smile on my face and reaching for my phone, excited to talk to you, i knew i was done for.`,
+
+    `i’m really insecure about my nose.`,
+
+    `i have this huge thing when things feel off between us, my brain automatically makes me think that you’re going to leave.`,
+
+    `sometimes i don’t understand what i feel for you. like i know i love you, ive never doubted that, i just mean that what i feel for you is so strong, and im still learning new things about that. i don’t have the right words to describe what i feel for you.`,
+
+    `i love that you always try to be friends with my friends. it shows you make an effort in things i love.`,
+
+    `sometimes, late at night i get to missing you reallyyyyy badly and i start reading our old messages and i still get that fuzzy feeling in my chest.`,
+
+    `my mind works in weird ways, like i have to write things out in order to understand them and i feel like if i don’t show you what ive written, im a coward, like i have to tell you before we run out of time. i know that sounds weird but it’s like that’s what my brain tells me.`,
+
+    `i love when you have your hair in a ponytail, more so watching you put your hair in one. BUT i really love when you wear your hair done because i know you rarely do and it feels like something only very few people get to see, and it feels special. it’s just hair and you probably think that’s stupid but.`,
+
+    `i cried when you did my name on your reposts.`,
+
+    `i hate that you’re hurting and i wish i could make it all better.`,
+
+    `i’m upset that you like cass, but i also hate it because i know that it’s hurting you because all she talks about is guys, and i know sometimes you wish you were a boy just so she’d like you, and i hate that you feel that way.`,
+
+    `i’m still really hurt and upset about what you did, but i understand, and im not mad at you, you’re forgiven and you’re learning, i couldn’t hate you if i tried, it makes my heart hurt to know that you were hurting so much because you tried not to hurt me.`,
+
+    `you’re my person, we may be broken up but that’s never going to change, you’re always going to be my person, you may not be my soulmate but you’ll always be special to me. my person.`
+  ]
+},
       {
         title: "christmas activities",
         body: "a collection of festive things for us to do together.",
@@ -1872,6 +2016,8 @@ const reasonsPageLabel = document.getElementById("reasons-page-label");
 const reasonsPageNumber = document.getElementById("reasons-page-number");
 const reasonsPrevious = document.getElementById("reasons-previous");
 const reasonsNext = document.getElementById("reasons-next");
+const neverToldContent = document.getElementById("never-told-content");
+const neverToldEntries = document.getElementById("never-told-entries");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -1881,6 +2027,7 @@ christmasGamesContent.hidden = gift.type !== "christmas-games";
 poemContent.hidden = gift.type !== "poem";
 movieListContent.hidden = gift.type !== "movie-list";
 reasonsContent.hidden = gift.type !== "reasons";
+neverToldContent.hidden = gift.type !== "never-told-you";
 let reasonsPage = 0;
 
 function renderReasonsPage() {
@@ -1935,6 +2082,26 @@ if (gift.type === "reasons") {
 
   renderReasonsPage();
 }
+    if (gift.type === "never-told-you") {
+  neverToldEntries.innerHTML = "";
+
+  gift.entries.forEach((entry, index) => {
+    const item = document.createElement("div");
+    item.className = "never-told-entry";
+
+    const number = document.createElement("span");
+    number.className = "never-told-number";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const text = document.createElement("p");
+    text.className = "never-told-text";
+    text.textContent = entry;
+
+    item.appendChild(number);
+    item.appendChild(text);
+    neverToldEntries.appendChild(item);
+  });
+}  
 
 giftTitle.hidden =
   gift.type === "recipe" ||
