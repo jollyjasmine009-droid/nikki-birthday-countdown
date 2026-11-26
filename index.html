@@ -1381,6 +1381,109 @@
     grid-template-columns: 1fr;
   }
 }
+/* DAY 10: THINGS I WANT TO DO WITH YOU */
+
+.things-to-do-content[hidden] {
+  display: none;
+}
+
+.things-to-do-content {
+  padding: 30px 18px;
+  border: 1px solid rgba(185, 155, 232, 0.25);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at top, rgba(185, 155, 232, 0.12), transparent 65%),
+    #211d2d;
+  overflow: hidden;
+}
+
+.to-do-stars {
+  color: #d9c9f2;
+  text-align: center;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+}
+
+.to-do-eyebrow {
+  color: #b99be8;
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.to-do-heading {
+  color: #f4effa;
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.to-do-intro {
+  color: #bdb3ca;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.to-do-divider {
+  color: #b99be8;
+  text-align: center;
+  margin: 23px 0;
+}
+
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.to-do-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 14px 13px;
+  border: 1px solid rgba(217, 201, 242, 0.13);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.035);
+  transition: background 0.2s ease;
+}
+
+.to-do-number {
+  flex: 0 0 28px;
+  color: #b99be8;
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 1px;
+}
+
+.to-do-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: #f4effa;
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.to-do-item:nth-child(5n + 1) {
+  border-left: 2px solid rgba(185, 155, 232, 0.65);
+}
+
+.to-do-footer {
+  color: #a99bb9;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 25px;
+}
   </style>
 </head>
 
@@ -1689,6 +1792,25 @@
 
   <div class="activities-footer">
     a little festive fun, just because ✦
+  </div>
+</div>
+          <div id="things-to-do-content" class="things-to-do-content" hidden>
+  <div class="to-do-stars">✦　✧　✦</div>
+
+  <div class="to-do-eyebrow">A COLLECTION OF LITTLE AND BIG THINGS</div>
+
+  <h4 class="to-do-heading">a little bucket list</h4>
+
+  <p class="to-do-intro">
+    22 things, big and small, written down in one place. ♡
+  </p>
+
+  <div class="to-do-divider">✧ ───── ✧</div>
+
+  <div id="to-do-list" class="to-do-list"></div>
+
+  <div class="to-do-footer">
+    and all the little things in between ✦
   </div>
 </div>
 </section>
@@ -2043,10 +2165,35 @@ so happy birthday baby, i hope it’s one to remember
   activityUrl: "https://www.whychristmas.com/fun/"
 },
       {
-        title: "things i want to do with you",
-        body: "a collection of little and big things i want us to experience together.",
-        letter: "your things-to-do letter will go here. ♡"
-      },
+  type: "things-to-do",
+  title: "things i want to do with you",
+  body: "a collection of little and big things i want us to experience together.",
+  letter: "your things-to-do letter will go here. ♡",
+  activities: [
+    `grocery shopping while giggling and laughing throughout the store because we did something so stupid.`,
+    `a picnic in the grass somewhere where it’s just you and me.`,
+    `this one is kinda similar but a picnic at the park where we can watch kids play and laugh while we sit there.`,
+    `watch movies (specifically 10 things i hate about you) in matching pjs on the couch cuddling.`,
+    `make out. self explanatory.`,
+    `fall asleep together. and wake up and realize you’re still there.`,
+    `i want to lay on your chest and feel your heart beating. i think it would be calming to just lay there with you and breathe.`,
+    `i want us to try to cook or bake something and then completely get sidetracked cause we’re laughing and talking while we sit on the counter eating the ingredients.`,
+    `i know this sounds silly but i really want to have play fights with you. or like tickle you. basically anything to hear your cute giggles.`,
+    `late night talks where we just lay there and talk about anything and everything.`,
+    `to watch the stars together.`,
+    `to drive and scream our lungs out to the playlists i’ve made you.`,
+    `to do the 10 things i hate about you paint scene.`,
+    `to try and learn a dance together.`,
+    `have board game nights.`,
+    `kiss in the rain.`,
+    `read books together.`,
+    `hold hands in public.`,
+    `GO TO BOOKSTORES AND SHOPPING TOGETHER.`,
+    `fight over how we decorate our future place.`,
+    `and everything else we haven’t thought of yet.`,
+    `stay friends because i can’t lose you.`
+  ]
+},
       {
         title: "things that remind me of you",
         body: "all the little things that somehow always lead me back to you.",
@@ -2221,6 +2368,8 @@ const reasonsNext = document.getElementById("reasons-next");
 const neverToldContent = document.getElementById("never-told-content");
 const neverToldEntries = document.getElementById("never-told-entries");
 const christmasActivitiesContent = document.getElementById("christmas-activities-content");
+const thingsToDoContent = document.getElementById("things-to-do-content");
+const toDoList = document.getElementById("to-do-list");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -2232,6 +2381,7 @@ movieListContent.hidden = gift.type !== "movie-list";
 reasonsContent.hidden = gift.type !== "reasons";
 neverToldContent.hidden = gift.type !== "never-told-you";
 christmasActivitiesContent.hidden = gift.type !== "christmas-activities";
+thingsToDoContent.hidden = gift.type !== "things-to-do";
 let reasonsPage = 0;
 
 function renderReasonsPage() {
@@ -2314,7 +2464,8 @@ giftTitle.hidden =
   gift.type === "poem" ||
   gift.type === "movie-list" ||
   gift.type === "reasons" ||
-  gift.type === "christmas-activities" ;
+  gift.type === "christmas-activities" ||
+  gift.type === "things-to-do" ;
 
 giftBody.hidden =
   gift.type === "recipe" ||
@@ -2323,7 +2474,8 @@ giftBody.hidden =
   gift.type === "poem" ||
   gift.type === "movie-list" ||
   gift.type === "reasons" ||
-  gift.type === "christmas-activities" ;
+  gift.type === "christmas-activities" ||
+  gift.type === "things-to-do" ;
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
@@ -2332,9 +2484,30 @@ document.getElementById("gift-label").hidden =
   gift.type === "poem" ||
   gift.type === "movie-list" ||
   gift.type === "reasons" ||
-  gift.type === "christmas-activities" ;
+  gift.type === "christmas-activities" ||
+  gift.type === "things-to-do" ;
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
+}
+      if (gift.type === "things-to-do") {
+  toDoList.innerHTML = "";
+
+  gift.activities.forEach((activity, index) => {
+    const item = document.createElement("div");
+    item.className = "to-do-item";
+
+    const number = document.createElement("span");
+    number.className = "to-do-number";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const text = document.createElement("p");
+    text.className = "to-do-text";
+    text.textContent = activity;
+
+    item.appendChild(number);
+    item.appendChild(text);
+    toDoList.appendChild(item);
+  });
 }
       if (gift.type === "movie-list") {
   const renderMovies = (container, movies) => {
