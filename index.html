@@ -1672,6 +1672,67 @@
   }
 }
 
+    /* DAY 12: VIDEO */
+
+.video-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.video-stars {
+  color: var(--purple);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.video-eyebrow {
+  color: var(--purple);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.video-heading {
+  font-family: "Playfair Display", serif;
+  color: var(--light-purple);
+  font-size: 25px;
+  margin-bottom: 14px;
+}
+
+.video-intro {
+  color: #d9d2e5;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+.video-divider {
+  color: var(--purple);
+  margin: 20px 0;
+}
+
+.video-frame {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--purple);
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 0 20px rgba(185, 155, 232, 0.15);
+}
+
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.video-footer {
+  color: var(--purple);
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 18px;
+}
   </style>
 </head>
 
@@ -2045,6 +2106,38 @@
 
   <div class="reminders-footer">
     somehow, everything leads back to you ✦
+  </div>
+
+</div>
+          <!-- DAY 12: A VIDEO FROM ME TO YOU -->
+<div id="video-content" class="video-content" hidden>
+
+  <div class="video-stars">✦　✧　✦</div>
+
+  <div class="video-eyebrow">A LITTLE SOMETHING JUST FOR YOU</div>
+
+  <h4 class="video-heading">a video from me to you ♡</h4>
+
+  <p class="video-intro">
+    i wanted to make something a little different for you.
+    so here's a little piece of me, saved just for you. ♡
+  </p>
+
+  <div class="video-divider">✧ ───── ✧</div>
+
+  <div class="video-frame">
+    <iframe
+      src="https://player.cloudinary.com/embed/?cloud_name=yigar04p&public_id=VIDEO-2026-10-13-21-40-59"
+      width="100%"
+      height="300"
+      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+      allowfullscreen
+      frameborder="0">
+    </iframe>
+  </div>
+
+  <div class="video-footer">
+    a little memory, just for you ♡
   </div>
 
 </div>
@@ -2437,10 +2530,12 @@ so happy birthday baby, i hope it’s one to remember
   letter: "your reminders letter will go here. ♡"
 },
       {
-        title: "a video from me to you",
-        body: "a little video made especially for you.",
-        letter: "your video letter will go here. ♡"
-      },
+  type: "video",
+  title: "a video from me to you",
+  body: "a little video made especially for you.",
+  letter: "your video letter will go here. ♡",
+  videoUrl: "https://player.cloudinary.com/embed/?cloud_name=yigar04p&public_id=VIDEO-2026-10-13-21-40-59"
+},
       {
         title: "movie bingo",
         body: "a little bingo game for our movie nights.",
@@ -2640,6 +2735,7 @@ const remindersContent = document.getElementById("reminders-content");
 const remindersGrid = document.getElementById("reminders-grid");
 const remindersCount = document.getElementById("reminders-count");
 const remindersFinale = document.getElementById("reminders-finale");
+const videoContent = document.getElementById("video-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -2653,6 +2749,7 @@ neverToldContent.hidden = gift.type !== "never-told-you";
 christmasActivitiesContent.hidden = gift.type !== "christmas-activities";
 thingsToDoContent.hidden = gift.type !== "things-to-do";
 remindersContent.hidden = gift.type !== "reminders";
+videoContent.hidden = gift.type !== "video";
 let reasonsPage = 0;
 
 function renderReasonsPage() {
@@ -2738,7 +2835,8 @@ giftTitle.hidden =
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
-  gift.type === "things-to-do" ;
+  gift.type === "things-to-do" ||
+  gift.type === "video";
 
 giftBody.hidden =
   gift.type === "recipe" ||
@@ -2750,7 +2848,8 @@ giftBody.hidden =
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
-  gift.type === "things-to-do" ;
+  gift.type === "things-to-do" ||
+  gift.type === "video";
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
@@ -2762,7 +2861,8 @@ document.getElementById("gift-label").hidden =
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
-  gift.type === "things-to-do" ;
+  gift.type === "things-to-do" ||
+  gift.type === "video";
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
