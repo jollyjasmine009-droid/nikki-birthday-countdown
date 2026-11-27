@@ -1733,6 +1733,147 @@
   letter-spacing: 1px;
   margin-top: 18px;
 }
+    /* DAY 13: MOVIE BINGO */
+
+.movie-bingo-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.bingo-stars,
+.bingo-win-stars {
+  color: var(--purple);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.bingo-eyebrow {
+  color: var(--purple);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.bingo-heading {
+  font-family: "Playfair Display", serif;
+  color: var(--light-purple);
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.bingo-intro {
+  color: #d9d2e5;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+.bingo-counter {
+  color: var(--purple);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.bingo-board-wrap {
+  background: var(--panel);
+  border: 1px solid rgba(185, 155, 232, 0.35);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.bingo-letters,
+.bingo-board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.bingo-letters {
+  margin-bottom: 7px;
+}
+
+.bingo-letters span {
+  color: var(--purple);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.bingo-square {
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 3px;
+  border: 1px solid rgba(185, 155, 232, 0.25);
+  border-radius: 7px;
+  background: #282337;
+  color: #e5dcef;
+  font-size: clamp(8px, 2.3vw, 11px);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.bingo-square.marked {
+  background: var(--purple);
+  color: #21192b;
+  border-color: var(--light-purple);
+  font-weight: bold;
+}
+
+.bingo-square.free {
+  background: #443451;
+  color: var(--light-purple);
+  font-weight: bold;
+}
+
+.bingo-square:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.bingo-message {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid var(--purple);
+  border-radius: 12px;
+  background: #282337;
+}
+
+.bingo-message h5 {
+  color: var(--light-purple);
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  margin: 5px 0;
+}
+
+.bingo-message p {
+  color: #e5dcef;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.bingo-new-game {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border: 1px solid var(--purple);
+  border-radius: 25px;
+  background: transparent;
+  color: var(--light-purple);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bingo-footer {
+  color: var(--purple);
+  font-size: 11px;
+  margin-top: 18px;
+}
   </style>
 </head>
 
@@ -2142,6 +2283,48 @@
 
 </div>
 
+          <!-- DAY 13: MOVIE BINGO -->
+<div id="movie-bingo-content" class="movie-bingo-content" hidden>
+
+  <div class="bingo-stars">✦　✧　✦</div>
+
+  <div class="bingo-eyebrow">A GAME FOR EVERY MOVIE NIGHT</div>
+
+  <h4 class="bingo-heading">movie bingo ♡</h4>
+
+  <p class="bingo-intro">
+    a little game to make every movie night even more fun.
+    tap a square whenever something happens on screen.
+    get five in a row to win! ♡
+  </p>
+
+  <div class="bingo-counter">
+    <span id="bingo-count">0</span> / 24 squares marked
+  </div>
+
+  <div class="bingo-board-wrap">
+    <div class="bingo-letters">
+      <span>B</span><span>I</span><span>N</span><span>G</span><span>O</span>
+    </div>
+
+    <div id="bingo-board" class="bingo-board"></div>
+  </div>
+
+  <div id="bingo-message" class="bingo-message" hidden>
+    <div class="bingo-win-stars">✦ ♡ ✦</div>
+    <h5>BINGO!</h5>
+    <p>you did it! here's to another lovely movie night. ♡</p>
+  </div>
+
+  <button id="bingo-new-game" class="bingo-new-game" type="button">
+    ✧ shuffle & start a new game ✧
+  </button>
+
+  <div class="bingo-footer">
+    same movies, different little surprises ♡
+  </div>
+
+</div>
 </section>
 
 
@@ -2536,11 +2719,12 @@ so happy birthday baby, i hope it’s one to remember
   letter: "your video letter will go here. ♡",
   videoUrl: "https://player.cloudinary.com/embed/?cloud_name=yigar04p&public_id=VIDEO-2026-10-13-21-40-59"
 },
-      {
-        title: "movie bingo",
-        body: "a little bingo game for our movie nights.",
-        letter: "your movie bingo letter will go here. ♡"
-      },
+     {
+  type: "movie-bingo",
+  title: "movie bingo",
+  body: "a little bingo game for our movie nights.",
+  letter: "your movie bingo letter will go here. ♡"
+},
       {
         title: "a book of coupons",
         body: "a little book filled with things you can redeem from me.",
@@ -2736,6 +2920,7 @@ const remindersGrid = document.getElementById("reminders-grid");
 const remindersCount = document.getElementById("reminders-count");
 const remindersFinale = document.getElementById("reminders-finale");
 const videoContent = document.getElementById("video-content");
+const movieBingoContent = document.getElementById("movie-bingo-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -2750,6 +2935,10 @@ christmasActivitiesContent.hidden = gift.type !== "christmas-activities";
 thingsToDoContent.hidden = gift.type !== "things-to-do";
 remindersContent.hidden = gift.type !== "reminders";
 videoContent.hidden = gift.type !== "video";
+movieBingoContent.hidden = gift.type !== "movie-bingo";
+if (gift.type === "movie-bingo") {
+  startBingoGame();
+}
 let reasonsPage = 0;
 
 function renderReasonsPage() {
@@ -2836,7 +3025,8 @@ giftTitle.hidden =
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
   gift.type === "things-to-do" ||
-  gift.type === "video";
+  gift.type === "video" ||
+  gift.type === "movie-bingo";
 
 giftBody.hidden =
   gift.type === "recipe" ||
@@ -2849,7 +3039,8 @@ giftBody.hidden =
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
   gift.type === "things-to-do" ||
-  gift.type === "video";
+  gift.type === "video" ||
+  gift.type === "movie-bingo";
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
@@ -2862,7 +3053,8 @@ document.getElementById("gift-label").hidden =
   gift.type === "christmas-activities" ||
   gift.type === "reminders" ||
   gift.type === "things-to-do" ||
-  gift.type === "video";
+  gift.type === "video" ||
+  gift.type === "movie-bingo";
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
@@ -2996,6 +3188,116 @@ dayOneDecoration.hidden = number !== 1;
       document.getElementById("modal").classList.add("show");
       document.getElementById("close-button").focus();
     }
+    // DAY 13: MOVIE BINGO
+
+const bingoMoments = [
+  "someone says i love you",
+  "a plot twist happens",
+  "someone trips",
+  "an embarrassing moment",
+  "a dramatic entrance",
+  "a happy ending",
+  "someone cries",
+  "a character lies",
+  "a beautiful sunset",
+  "a kiss happens",
+  "someone makes a bad decision",
+  "an unexpected visitor",
+  "a friendship moment",
+  "someone gets lost",
+  "a memorable quote",
+  "someone sings",
+  "an unexpected friendship",
+  "someone runs away",
+  "a big argument",
+  "a surprise phone call",
+  "a flashback",
+  "a funny side character",
+  "someone learns a lesson",
+  "an emotional scene"
+];
+
+let bingoMarked = new Set();
+let bingoWon = false;
+
+function startBingoGame() {
+  const board = document.getElementById("bingo-board");
+  const count = document.getElementById("bingo-count");
+  const message = document.getElementById("bingo-message");
+
+  const shuffled = [...bingoMoments];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  bingoMarked = new Set([12]);
+  bingoWon = false;
+
+  board.innerHTML = "";
+  message.hidden = true;
+
+  shuffled.forEach((moment, index) => {
+    const square = document.createElement("button");
+    square.type = "button";
+    square.className = "bingo-square";
+
+    if (index === 12) {
+      square.textContent = "♡ FREE SPACE ♡";
+      square.classList.add("free", "marked");
+      square.disabled = true;
+    } else {
+      square.textContent = moment;
+      square.addEventListener("click", () => {
+        if (bingoWon) return;
+
+        if (bingoMarked.has(index)) {
+          bingoMarked.delete(index);
+          square.classList.remove("marked");
+        } else {
+          bingoMarked.add(index);
+          square.classList.add("marked");
+        }
+
+        updateBingoGame();
+      });
+    }
+
+    board.appendChild(square);
+  });
+
+  updateBingoGame();
+}
+
+function updateBingoGame() {
+  const count = document.getElementById("bingo-count");
+  const message = document.getElementById("bingo-message");
+
+  count.textContent = bingoMarked.size - 1;
+
+  const lines = [
+    ...Array.from({ length: 5 }, (_, r) =>
+      Array.from({ length: 5 }, (_, c) => r * 5 + c)
+    ),
+    ...Array.from({ length: 5 }, (_, c) =>
+      Array.from({ length: 5 }, (_, r) => r * 5 + c)
+    ),
+    [0, 6, 12, 18, 24],
+    [4, 8, 12, 16, 20]
+  ];
+
+  const hasBingo = lines.some(line =>
+    line.every(index => bingoMarked.has(index))
+  );
+
+  if (hasBingo) {
+    bingoWon = true;
+    message.hidden = false;
+  }
+}
+
+document.getElementById("bingo-new-game").addEventListener("click", startBingoGame);
 
     function openLetter() {
       if (currentGiftNumber === null) return;
