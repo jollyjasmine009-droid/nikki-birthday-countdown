@@ -2009,6 +2009,79 @@
   font-size: 11px;
   margin-top: 20px;
 }
+   
+/* DAY 15: VOICE MESSAGES */
+
+.voice-messages-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.voice-stars {
+  color: var(--purple);
+  font-size: 23px;
+  margin-bottom: 14px;
+}
+
+.voice-eyebrow {
+  color: var(--purple);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.voice-heading {
+  font-family: "Playfair Display", serif;
+  color: var(--light-purple);
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.voice-intro {
+  color: #d9d2e5;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 350px;
+  margin: 0 auto 24px;
+}
+
+.voice-card {
+  background: #211d2e;
+  border: 1px solid rgba(185, 155, 232, 0.35);
+  border-radius: 15px;
+  padding: 17px;
+  margin: 14px 0;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.voice-card-number {
+  color: var(--purple);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.voice-card h5 {
+  font-family: "Playfair Display", serif;
+  color: var(--light-purple);
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0 0 14px;
+}
+
+.voice-card audio {
+  width: 100%;
+  height: 40px;
+}
+
+.voice-footer {
+  color: var(--purple);
+  font-size: 11px;
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+ 
   </style>
 </head>
 
@@ -2514,6 +2587,77 @@
   </div>
 
 </div>
+       
+<!-- DAY 15: VOICE MESSAGES -->
+<div id="voice-messages-content" class="voice-messages-content" hidden>
+
+  <div class="voice-stars">✦　♡　✦</div>
+
+  <div class="voice-eyebrow">A LITTLE COLLECTION OF VOICE NOTES</div>
+
+  <h4 class="voice-heading">a little piece of me ♡</h4>
+
+  <p class="voice-intro">
+    six little messages, saved just for you.
+    press play whenever you want to hear my voice.
+  </p>
+
+  <div id="voice-message-list">
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 01</div>
+      <h5>a little hello ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804229/New_Recording_114.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 02</div>
+      <h5>just a little reminder ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804231/New_Recording_115.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 03</div>
+      <h5>something for you ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804229/New_Recording_116.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 04</div>
+      <h5>a little thought ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804228/New_Recording_117.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 05</div>
+      <h5>one more thing ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804228/New_Recording_119.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+    <div class="voice-card">
+      <div class="voice-card-number">MESSAGE 06</div>
+      <h5>saved just for you ♡</h5>
+      <audio controls preload="none">
+        <source src="https://res.cloudinary.com/yigar04p/video/upload/v1795804230/New_Recording_112.m4a" type="audio/mp4">
+      </audio>
+    </div>
+
+  </div>
+
+  <div class="voice-footer">six little messages, all for you ♡</div>
+
+</div>
+   
 </section>
 
 
@@ -2920,11 +3064,12 @@ so happy birthday baby, i hope it’s one to remember
   body: "22 little coupons, made just for you.",
   letter: "your coupon book letter will go here. ♡"
 },   
-      {
-        title: "voice messages",
-        body: "a collection of little messages for you to listen to.",
-        letter: "your voice message letter will go here. ♡"
-      },
+     {
+  type: "voice-messages",
+  title: "little voice messages",
+  body: "six little recordings, saved just for you.",
+  letter: "your voice messages letter will go here. ♡"
+},
       {
         title: "when i knew i loved you",
         body: "a little story about when i realised just how much you meant to me.",
@@ -3112,6 +3257,7 @@ const remindersFinale = document.getElementById("reminders-finale");
 const videoContent = document.getElementById("video-content");
 const movieBingoContent = document.getElementById("movie-bingo-content");
 const couponBookContent = document.getElementById("coupon-book-content");
+const voiceMessagesContent = document.getElementById("voice-messages-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
       
@@ -3128,6 +3274,7 @@ remindersContent.hidden = gift.type !== "reminders";
 videoContent.hidden = gift.type !== "video";
 movieBingoContent.hidden = gift.type !== "movie-bingo";
 couponBookContent.hidden = gift.type !== "coupon-book";
+voiceMessagesContent.hidden = gift.type !== "voice-messages";
 
 if (gift.type === "coupon-book") {
   currentCoupon = 0;
@@ -3224,7 +3371,8 @@ giftTitle.hidden =
   gift.type === "things-to-do" ||
   gift.type === "video" ||
   gift.type === "movie-bingo" ||
-  gift.type === "coupon-book" ;
+  gift.type === "coupon-book" ||
+  gift.type === "voice-messages" ;
 
 giftBody.hidden =
   gift.type === "recipe" ||
@@ -3239,7 +3387,8 @@ giftBody.hidden =
   gift.type === "things-to-do" ||
   gift.type === "video" ||
   gift.type === "movie-bingo" ||
-  gift.type === "coupon-book" ;
+  gift.type === "coupon-book" || 
+  gift.type === "voice-messages" ;
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
@@ -3254,7 +3403,8 @@ document.getElementById("gift-label").hidden =
   gift.type === "things-to-do" ||
   gift.type === "video" ||
   gift.type === "movie-bingo" ||
-  gift.type === "coupon-book" ;
+  gift.type === "coupon-book" || 
+  gift.type === "voice-messages" ;
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
