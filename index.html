@@ -3111,9 +3111,10 @@ const remindersCount = document.getElementById("reminders-count");
 const remindersFinale = document.getElementById("reminders-finale");
 const videoContent = document.getElementById("video-content");
 const movieBingoContent = document.getElementById("movie-bingo-content");
+const couponBookContent = document.getElementById("coupon-book-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
-
+      
 recipeContent.hidden = gift.type !== "recipe";
 playlistContent.hidden = gift.type !== "playlist";
 christmasGamesContent.hidden = gift.type !== "christmas-games";   
@@ -3132,7 +3133,6 @@ if (gift.type === "coupon-book") {
   currentCoupon = 0;
   renderCoupon();
 }
-const couponBookContent = document.getElementById("coupon-book-content");
 if (gift.type === "movie-bingo") {
   startBingoGame();
 }
