@@ -1482,6 +1482,196 @@
   text-align: center;
   margin-top: 25px;
 }
+    
+/* DAY 11: THINGS THAT REMIND ME OF YOU */
+
+.reminders-content[hidden],
+.reminders-finale[hidden] {
+  display: none;
+}
+
+.reminders-content {
+  padding: 28px 17px;
+  border: 1px solid rgba(185, 155, 232, 0.3);
+  border-radius: 17px;
+  background:
+    radial-gradient(ellipse at top, rgba(185, 155, 232, 0.16), transparent 65%),
+    linear-gradient(160deg, #292238, #191624);
+  overflow: hidden;
+}
+
+.reminders-stars {
+  color: #d9c9f2;
+  font-size: 19px;
+  letter-spacing: 7px;
+  margin-bottom: 20px;
+}
+
+.reminders-eyebrow {
+  color: #b99be8;
+  font-size: 9px;
+  letter-spacing: 2px;
+  line-height: 1.7;
+  margin-bottom: 13px;
+}
+
+.reminders-heading {
+  color: #f4effa;
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 17px;
+}
+
+.reminders-intro {
+  color: #c5bdcf;
+  font-size: 12px;
+  line-height: 1.9;
+  white-space: pre-line;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.reminders-divider {
+  color: #b99be8;
+  margin: 24px 0 18px;
+}
+
+.reminders-counter {
+  color: #cbb5eb;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 23px;
+}
+
+.reminders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  align-items: center;
+}
+
+.reminder-note {
+  position: relative;
+  min-height: 105px;
+  padding: 17px 10px;
+  border: 1px solid rgba(100, 76, 124, 0.2);
+  border-radius: 5px;
+  background: #e9deef;
+  color: #554363;
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease;
+  overflow-wrap: anywhere;
+}
+
+.reminder-note:nth-child(4n + 1) {
+  transform: rotate(-2deg);
+}
+
+.reminder-note:nth-child(4n + 2) {
+  transform: rotate(1.8deg);
+  background: #ded5ed;
+}
+
+.reminder-note:nth-child(4n + 3) {
+  transform: rotate(1deg);
+  background: #eee5e9;
+}
+
+.reminder-note:nth-child(4n) {
+  transform: rotate(-1.5deg);
+  background: #e2e1f0;
+}
+
+.reminder-note:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.reminder-note.discovered {
+  background: #cbb5e2;
+  border-color: #b99be8;
+}
+
+.reminder-note:focus-visible {
+  outline: 2px solid #d9c9f2;
+  outline-offset: 4px;
+}
+
+.reminder-note-number {
+  display: block;
+  color: #9277a9;
+  font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+
+.reminder-note-hint {
+  display: block;
+  color: #806b91;
+  font-size: 10px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.reminders-finale {
+  margin-top: 27px;
+  padding: 23px 17px;
+  border: 1px solid rgba(185, 155, 232, 0.3);
+  border-radius: 13px;
+  background: rgba(185, 155, 232, 0.09);
+  animation: letterAppear .5s ease;
+}
+
+.reminders-finale-stars {
+  color: #d9c9f2;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.reminders-finale h5 {
+  color: #e5d8f5;
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.reminders-finale p {
+  color: #c5bdcf;
+  font-size: 12px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.reminders-footer {
+  color: #a99bb9;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-top: 25px;
+}
+
+#gift-card:has(#reminders-content:not([hidden])) {
+  padding: 12px;
+  background: #211d2d;
+  border-color: rgba(185, 155, 232, 0.3);
+}
+
+#gift-card:has(#reminders-content:not([hidden])) .gift-label {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  .reminders-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 
@@ -2233,6 +2423,35 @@ so happy birthday baby, i hope it’s one to remember
         letter: "your big birthday letter will go here. ♡"
       }
     ];
+    const reminders = [
+  "f1.",
+  "a volleyball.",
+  "motorcycles.",
+  "the color red.",
+  "ari and ella.",
+  "a toothbrush.",
+  "braids.",
+  "glasses.",
+  "bells.",
+  "when someone scrunches their nose at me.",
+  "pushups.",
+  "10 things i hate about you.",
+  "listening to music in long care rides at night.",
+  "putting my hair in a ponytail.",
+  "any time i see a dog.",
+  "listening to any shawn mendes song.",
+  "storms.",
+  "tissues.",
+  "running on a sunny day.",
+  "sunsets.",
+  "architecture.",
+  "late night anything.",
+  "seeing people hold hands.",
+  "drinking hot chocolate.",
+  "wattpad."
+];
+
+const discoveredReminders = new Set();
 
     const birthdayDate = "2026-12-18";
 
@@ -2368,6 +2587,10 @@ const neverToldEntries = document.getElementById("never-told-entries");
 const christmasActivitiesContent = document.getElementById("christmas-activities-content");
 const thingsToDoContent = document.getElementById("things-to-do-content");
 const toDoList = document.getElementById("to-do-list");
+const remindersContent = document.getElementById("reminders-content");
+const remindersGrid = document.getElementById("reminders-grid");
+const remindersCount = document.getElementById("reminders-count");
+const remindersFinale = document.getElementById("reminders-finale");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
 
@@ -2380,6 +2603,7 @@ reasonsContent.hidden = gift.type !== "reasons";
 neverToldContent.hidden = gift.type !== "never-told-you";
 christmasActivitiesContent.hidden = gift.type !== "christmas-activities";
 thingsToDoContent.hidden = gift.type !== "things-to-do";
+remindersContent.hidden = gift.type !== "reminders";
 let reasonsPage = 0;
 
 function renderReasonsPage() {
@@ -2464,6 +2688,7 @@ giftTitle.hidden =
   gift.type === "reasons" ||
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
+  gift.type === "reminders" ||
   gift.type === "things-to-do" ;
 
 giftBody.hidden =
@@ -2475,6 +2700,7 @@ giftBody.hidden =
   gift.type === "reasons" ||
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
+  gift.type === "reminders" ||
   gift.type === "things-to-do" ;
 
 document.getElementById("gift-label").hidden =
@@ -2486,6 +2712,7 @@ document.getElementById("gift-label").hidden =
   gift.type === "reasons" ||
   gift.type === "never-told-you" ||
   gift.type === "christmas-activities" ||
+  gift.type === "reminders" ||
   gift.type === "things-to-do" ;
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
@@ -2508,6 +2735,62 @@ if (gift.type === "poem") {
     item.appendChild(number);
     item.appendChild(text);
     toDoList.appendChild(item);
+  });
+}
+      if (gift.type === "reminders") {
+  remindersGrid.innerHTML = "";
+
+  remindersCount.textContent = discoveredReminders.size;
+  remindersFinale.hidden = discoveredReminders.size !== reminders.length;
+
+  reminders.forEach((reminder, index) => {
+    const note = document.createElement("button");
+    note.type = "button";
+    note.className = "reminder-note";
+
+    const number = document.createElement("span");
+    number.className = "reminder-note-number";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const text = document.createElement("span");
+    text.className = "reminder-note-text";
+
+    const hint = document.createElement("span");
+    hint.className = "reminder-note-hint";
+
+    function updateNote() {
+      if (discoveredReminders.has(index)) {
+        note.classList.add("discovered");
+        text.textContent = reminder;
+        hint.textContent = "♡";
+        note.setAttribute("aria-label", reminder);
+      } else {
+        text.textContent = "a little reminder";
+        hint.textContent = "tap to reveal ✧";
+        note.setAttribute("aria-label", `Reveal reminder ${index + 1}`);
+      }
+    }
+
+    note.appendChild(number);
+    note.appendChild(text);
+    note.appendChild(hint);
+
+    note.addEventListener("click", () => {
+      if (!discoveredReminders.has(index)) {
+        discoveredReminders.add(index);
+      }
+
+      updateNote();
+
+      remindersCount.textContent = discoveredReminders.size;
+
+      if (discoveredReminders.size === reminders.length) {
+        remindersFinale.hidden = false;
+      }
+    });
+
+    updateNote();
+    remindersGrid.appendChild(note);
   });
 }
       if (gift.type === "movie-list") {
