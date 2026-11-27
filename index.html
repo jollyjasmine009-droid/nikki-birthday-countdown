@@ -2164,6 +2164,173 @@
 }
 
   
+/* DAY 17: CHRISTMAS SCAVENGER HUNT */
+
+.scavenger-hunt-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.hunt-stars {
+  color: #c99b63;
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.hunt-eyebrow {
+  color: #c99b63;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.hunt-heading {
+  font-family: "Playfair Display", serif;
+  color: var(--light-purple);
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.hunt-intro {
+  color: #d9d2e5;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 350px;
+  margin: 0 auto 24px;
+}
+
+.hunt-progress {
+  background: #f0e8dc;
+  color: #38513c;
+  padding: 17px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.hunt-progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hunt-progress-track {
+  background: #d9d0c3;
+  height: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hunt-progress-fill {
+  background: #a64c45;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.hunt-section-heading {
+  color: #d9b17c;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: left;
+  margin: 25px 0 12px;
+}
+
+.hunt-clue {
+  background: #f0e8dc;
+  border-left: 4px solid #9c4b43;
+  border-radius: 7px;
+  padding: 14px;
+  margin: 10px 0;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.hunt-clue label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+}
+
+.hunt-checkbox {
+  width: 17px;
+  height: 17px;
+  accent-color: #42664a;
+  flex-shrink: 0;
+}
+
+.hunt-clue-number {
+  color: #a64c45;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.hunt-clue-text {
+  color: #405342;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.hunt-clue.completed {
+  background: #dce5d8;
+  border-left-color: #42664a;
+}
+
+.hunt-clue.completed .hunt-clue-text {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.hunt-finale {
+  background: #f0e8dc;
+  color: #405342;
+  border: 2px dashed #a64c45;
+  border-radius: 12px;
+  padding: 25px 18px;
+  margin-top: 28px;
+}
+
+.hunt-finale-stars {
+  color: #a64c45;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.hunt-finale h5 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  color: #8d403a;
+  margin: 0 0 12px;
+}
+
+.hunt-finale p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.hunt-final-message {
+  border-top: 1px dashed #b9a894;
+  margin-top: 18px;
+  padding-top: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.hunt-footer {
+  color: #d9b17c;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 25px;
+}
+
   </style>
 </head>
 
@@ -2835,6 +3002,155 @@
 </div>
     
    
+<!-- DAY 17: CHRISTMAS SCAVENGER HUNT -->
+<div id="scavenger-hunt-content" class="scavenger-hunt-content" hidden>
+
+  <div class="hunt-stars">✦　❄　✦</div>
+
+  <div class="hunt-eyebrow">A LITTLE CHRISTMAS ADVENTURE</div>
+
+  <h4 class="hunt-heading">the christmas hunt ♡</h4>
+
+  <p class="hunt-intro">
+    twelve little clues, some things to find, some things to discover,
+    and a little surprise waiting at the end.
+  </p>
+
+  <div class="hunt-progress">
+    <div class="hunt-progress-text">
+      <span>your progress</span>
+      <span id="hunt-progress-count">0 / 12</span>
+    </div>
+    <div class="hunt-progress-track">
+      <div id="hunt-progress-fill" class="hunt-progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="hunt-section-heading">PART ONE · AROUND YOU</div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">01</span>
+      <span class="hunt-clue-text">find something red.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">02</span>
+      <span class="hunt-clue-text">find something that reminds you of Christmas.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">03</span>
+      <span class="hunt-clue-text">find something cosy.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">04</span>
+      <span class="hunt-clue-text">find something that makes you think of me.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">05</span>
+      <span class="hunt-clue-text">find something that makes you smile.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">06</span>
+      <span class="hunt-clue-text">find something that has a little story behind it.</span>
+    </label>
+  </div>
+
+  <div class="hunt-section-heading">PART TWO · THE DIGITAL HUNT</div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">07</span>
+      <span class="hunt-clue-text">find a Christmas song that reminds you of me.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">08</span>
+      <span class="hunt-clue-text">find a picture that makes you happy.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">09</span>
+      <span class="hunt-clue-text">find a Christmas movie we'd watch together.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">10</span>
+      <span class="hunt-clue-text">find something online you'd love to show me.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">11</span>
+      <span class="hunt-clue-text">find a photo of something you'd like us to do together.</span>
+    </label>
+  </div>
+
+  <div class="hunt-clue">
+    <label>
+      <input type="checkbox" class="hunt-checkbox">
+      <span class="hunt-clue-number">12</span>
+      <span class="hunt-clue-text">find a Christmas memory you never want to forget.</span>
+    </label>
+  </div>
+
+  <div id="hunt-finale" class="hunt-finale" hidden>
+    <div class="hunt-finale-stars">✧　❄　✧</div>
+    <h5>you did it! ♡</h5>
+    <p>
+      you found all twelve little things.
+      here's your final surprise...
+    </p>
+    
+<div class="hunt-final-message">
+  and that's the end of your little Christmas hunt!
+
+  i hope you had fun finding all these little things.
+  i wish i could've been there beside you for every single
+  one, but until then, i hope this made you smile.
+
+  merry christmas, nikki. here's to all the little things
+  you have set out for you in this lifetime. ♡
+</div>
+
+  </div>
+
+  <div class="hunt-footer">made just for you this Christmas ♡</div>
+
+</div>
+
 </section>
 
 
@@ -3253,11 +3569,12 @@ so happy birthday baby, i hope it’s one to remember
   body: "three little moments i wrote down along the way.",
   letter: "a little collection of memories i never wanted to forget. ♡"
 },
-      {
-        title: "a christmas scavenger hunt",
-        body: "a little hunt with clues and surprises waiting for you.",
-        letter: "your scavenger hunt letter will go here. ♡"
-      },
+   {
+  type: "scavenger-hunt",
+  title: "the christmas scavenger hunt",
+  body: "twelve little clues and one final surprise.",
+  letter: "your scavenger hunt letter will go here. ♡"
+},  
       {
         title: "your birthday letter",
         body: "a huge birthday letter, written with all the love i have for you.",
@@ -3437,6 +3754,7 @@ const movieBingoContent = document.getElementById("movie-bingo-content");
 const couponBookContent = document.getElementById("coupon-book-content");
 const voiceMessagesContent = document.getElementById("voice-messages-content");
 const loveTimelineContent = document.getElementById("love-timeline-content");
+const scavengerHuntContent = document.getElementById("scavenger-hunt-content");
 const giftTitle = document.getElementById("gift-title");
 const giftBody = document.getElementById("gift-body");
       
@@ -3455,6 +3773,10 @@ movieBingoContent.hidden = gift.type !== "movie-bingo";
 couponBookContent.hidden = gift.type !== "coupon-book";
 voiceMessagesContent.hidden = gift.type !== "voice-messages";
 loveTimelineContent.hidden = gift.type !== "love-timeline";
+scavengerHuntContent.hidden = gift.type !== "scavenger-hunt";
+if (gift.type === "scavenger-hunt") {
+  updateScavengerHunt();
+}
 
 if (gift.type === "coupon-book") {
   currentCoupon = 0;
@@ -3553,7 +3875,8 @@ giftTitle.hidden =
   gift.type === "movie-bingo" ||
   gift.type === "coupon-book" ||
   gift.type === "voice-messages" || 
-  gift.type === "love-timeline" ;
+  gift.type === "love-timeline" || 
+  gift.type === "scavenger-hunt" ;
 
 giftBody.hidden =
   gift.type === "recipe" ||
@@ -3570,7 +3893,8 @@ giftBody.hidden =
   gift.type === "movie-bingo" ||
   gift.type === "coupon-book" || 
   gift.type === "voice-messages" || 
-  gift.type === "love-timeline" ;
+  gift.type === "love-timeline" || 
+  gift.type === "scavenger-hunt" ;
 
 document.getElementById("gift-label").hidden =
   gift.type === "recipe" ||
@@ -3587,7 +3911,8 @@ document.getElementById("gift-label").hidden =
   gift.type === "movie-bingo" ||
   gift.type === "coupon-book" || 
   gift.type === "voice-messages" || 
-  gift.type === "love-timeline" ;
+  gift.type === "love-timeline" || 
+  gift.type === "scavenger-hunt" ;
 if (gift.type === "poem") {
   poemText.textContent = gift.poem || "";
 }
@@ -3866,6 +4191,34 @@ document.getElementById("coupon-redeem").addEventListener("click", () => {
   redeemedCoupons.add(currentCoupon);
   renderCoupon();
 });
+  
+// DAY 17: CHRISTMAS SCAVENGER HUNT
+
+function updateScavengerHunt() {
+  const checkboxes = document.querySelectorAll(".hunt-checkbox");
+  const completed = document.querySelectorAll(".hunt-checkbox:checked").length;
+
+  const count = document.getElementById("hunt-progress-count");
+  const fill = document.getElementById("hunt-progress-fill");
+  const finale = document.getElementById("hunt-finale");
+
+  count.textContent = `${completed} / 12`;
+  fill.style.width = `${(completed / 12) * 100}%`;
+
+  checkboxes.forEach(checkbox => {
+    const clue = checkbox.closest(".hunt-clue");
+    clue.classList.toggle("completed", checkbox.checked);
+  });
+
+  finale.hidden = completed !== 12;
+}
+
+document.querySelectorAll(".hunt-checkbox").forEach(checkbox => {
+  checkbox.addEventListener("change", updateScavengerHunt);
+});
+
+updateScavengerHunt();
+
     // DAY 13: MOVIE BINGO
 
 const bingoMoments = [
